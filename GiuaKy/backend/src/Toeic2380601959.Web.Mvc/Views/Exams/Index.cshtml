@@ -125,9 +125,18 @@
                 </form>
 
                 <!-- Error Display Section -->
-                <div id="uploadErrors" class="alert alert-danger d-none">
-                    <h6 class="fw-bold text-danger"><i class="fas fa-exclamation-triangle me-2"></i>Phát hiện lỗi định dạng (Đã hủy giao dịch Rollback 100%):</h6>
-                    <ul id="errorList" class="mb-0 ps-3 small"></ul>
+                <div id="uploadErrors" class="alert alert-danger d-none mt-3 border border-danger shadow-sm">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-exclamation-triangle fa-2x text-danger me-2"></i>
+                        <div>
+                            <h6 class="fw-bold text-danger mb-0">Phát hiện lỗi định dạng - Đã hủy giao dịch (Rollback 100%)</h6>
+                            <small class="text-muted">Không có dữ liệu lỗi nào được lưu vào CSDL. Vui lòng sửa các lỗi sau trong file Word:</small>
+                        </div>
+                    </div>
+                    <hr class="my-2" />
+                    <div style="max-height: 220px; overflow-y: auto;">
+                        <ul id="errorList" class="mb-0 ps-3 small text-danger fw-semibold"></ul>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -166,6 +175,8 @@
             // Direct click handler for open modal
             $('#btnOpenUploadModal, [data-target="#uploadModal"], [data-bs-target="#uploadModal"]').on('click', function (e) {
                 e.preventDefault();
+                $('#uploadErrors').addClass('d-none');
+                $('#errorList').empty();
                 openUploadModal();
             });
 
@@ -178,7 +189,11 @@
             $('#btnSubmitUpload').click(function () {
                 var fileInput = $('#fileInput')[0];
                 if (!fileInput.files.length) {
-                    alert('Vui lòng chọn file .docx');
+                    if (typeof swal !== 'undefined') {
+                        swal('Chưa chọn file', 'Vui lòng chọn file Word (.docx) đề thi.', 'warning');
+                    } else {
+                        alert('Vui lòng chọn file Word (.docx) đề thi.');
+                    }
                     return;
                 }
 
@@ -197,23 +212,65 @@
                         $('#uploadProgress').addClass('d-none');
                         $('#btnSubmitUpload').prop('disabled', false);
 
-                        if (res.success) {
+                        var data = (res && res.result !== undefined && typeof res.result === 'object') ? res.result : res;
+
+                        if (data && data.success) {
                             closeUploadModal();
-                            alert(res.message);
-                            location.reload();
+                            if (typeof swal !== 'undefined') {
+                                swal({
+                                    title: "Tải lên thành công!",
+                                    text: data.message || "Đề thi đã được tạo và lưu vào hệ thống.",
+                                    icon: "success"
+                                }).then(function () {
+                                    location.reload();
+                                });
+                            } else {
+                                alert(data.message || 'Tải lên thành công!');
+                                location.reload();
+                            }
                         } else {
+                            var errors = (data && data.errors && data.errors.length) ? data.errors : 
+                                         (data && data.message ? [data.message] : 
+                                         (data && data.error && data.error.message ? [data.error.message] : ['File Word thiếu bộ tag hoặc cấu trúc không hợp lệ.']));
+
                             $('#errorList').empty();
-                            $.each(res.errors, function (index, err) {
-                                $('#errorList').append('<li>' + err + '</li>');
+                            var errorSummary = '';
+                            $.each(errors, function (index, err) {
+                                $('#errorList').append('<li class="py-1"><i class="fas fa-times-circle me-1"></i> ' + err + '</li>');
+                                if (index < 4) {
+                                    errorSummary += '• ' + err + '\n';
+                                }
                             });
+                            if (errors.length > 4) {
+                                errorSummary += '...và còn ' + (errors.length - 4) + ' lỗi khác (xem chi tiết trong khung bên dưới).';
+                            }
+
                             $('#uploadErrors').removeClass('d-none');
+
+                            // Xuất thông báo cảnh báo nổi bật
+                            if (typeof swal !== 'undefined') {
+                                swal({
+                                    title: "Lỗi file đề thi (Đã Rollback 100%)!",
+                                    text: "Phát hiện " + errors.length + " lỗi định dạng:\n\n" + errorSummary,
+                                    icon: "error",
+                                    button: "Xem danh sách lỗi"
+                                });
+                            } else {
+                                alert("Phát hiện " + errors.length + " lỗi định dạng (Đã Rollback 100%):\n\n" + errorSummary);
+                            }
                         }
                     },
                     error: function (xhr) {
                         $('#uploadProgress').addClass('d-none');
                         $('#btnSubmitUpload').prop('disabled', false);
-                        $('#errorList').empty().append('<li>Lỗi hệ thống khi tải file: ' + xhr.responseText + '</li>');
+                        var errorMsg = 'Lỗi kết nối máy chủ: ' + (xhr.responseJSON && xhr.responseJSON.error ? xhr.responseJSON.error.message : xhr.statusText);
+                        $('#errorList').empty().append('<li class="py-1"><i class="fas fa-times-circle me-1"></i> ' + errorMsg + '</li>');
                         $('#uploadErrors').removeClass('d-none');
+                        if (typeof swal !== 'undefined') {
+                            swal("Lỗi hệ thống", errorMsg, "error");
+                        } else {
+                            alert(errorMsg);
+                        }
                     }
                 });
             });

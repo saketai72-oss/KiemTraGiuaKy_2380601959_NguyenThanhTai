@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Abp.Web.Models;
 using Toeic2380601959.Controllers;
 using Toeic2380601959.EntityFrameworkCore;
 using Toeic2380601959.Toeic;
@@ -32,6 +33,7 @@ namespace Toeic2380601959.Web.Controllers
     }
 
     [AllowAnonymous]
+    [DontWrapResult]
     public class ExamsController : Toeic2380601959ControllerBase
     {
         private readonly Toeic2380601959DbContext _dbContext;
