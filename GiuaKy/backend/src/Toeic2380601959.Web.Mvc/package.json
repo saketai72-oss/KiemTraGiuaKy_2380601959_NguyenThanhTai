@@ -2,6 +2,7 @@
   "name": "abptemplate",
   "scripts": {
     "create-bundles": "yarn && gulp buildDev",
+    "bundle": "node bundle.js",
     "build": "yarn && gulp build",
     "prettier": "npx prettier --write .",
     "lint": "eslint"
