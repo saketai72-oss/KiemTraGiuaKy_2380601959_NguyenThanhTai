@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TOEIC Reading Master</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-container": "#316bf3",
+            "on-surface": "#131b2e",
+            "inverse-on-surface": "#eef0ff",
+            "tertiary-fixed-dim": "#4edea3",
+            "secondary": "#0051d5",
+            "on-primary-container": "#90a8ff",
+            "surface-container-highest": "#dae2fd",
+            "on-background": "#131b2e",
+            "on-secondary": "#ffffff",
+            "on-tertiary-container": "#27c38a",
+            "on-secondary-fixed": "#00174b",
+            "on-secondary-container": "#fefcff",
+            "primary-container": "#1e3a8a",
+            "on-error": "#ffffff",
+            "primary-fixed": "#dce1ff",
+            "error": "#ba1a1a",
+            "on-tertiary": "#ffffff",
+            "inverse-primary": "#b6c4ff",
+            "background": "#faf8ff",
+            "tertiary": "#00311f",
+            "primary": "#00236f",
+            "tertiary-fixed": "#6ffbbe",
+            "on-tertiary-fixed-variant": "#005236",
+            "surface-container-high": "#e2e7ff",
+            "tertiary-container": "#004a31",
+            "on-error-container": "#93000a",
+            "secondary-fixed": "#dbe1ff",
+            "surface-tint": "#4059aa",
+            "outline": "#757682",
+            "on-primary-fixed": "#00164e",
+            "surface-bright": "#faf8ff",
+            "on-primary-fixed-variant": "#264191",
+            "outline-variant": "#c5c5d3",
+            "surface-dim": "#d2d9f4",
+            "surface": "#faf8ff",
+            "on-tertiary-fixed": "#002113",
+            "surface-container-low": "#f2f3ff",
+            "on-secondary-fixed-variant": "#003ea8",
+            "error-container": "#ffdad6",
+            "secondary-fixed-dim": "#b4c5ff",
+            "on-surface-variant": "#444651",
+            "surface-container": "#eaedff",
+            "surface-variant": "#dae2fd",
+            "inverse-surface": "#283044",
+            "on-primary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#b6c4ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-2xl": "2rem",
+            "space-lg": "1rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-xl": "1.5rem",
+            "gutter": "1rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "display-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-sm": ["Inter"],
+            "label-lg": ["Inter"],
+            "body-passage": ["Inter"],
+            "score-metric": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "label-timer": ["Inter"]
+          },
+          "fontSize": {
+            "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-passage": ["16px", { "lineHeight": "26px", "letterSpacing": "0.005em", "fontWeight": "400" }],
+            "score-metric": ["40px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "label-timer": ["13px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex justify-center selection:bg-secondary selection:text-on-secondary antialiased pb-24">
+<!-- Mobile Layout Container -->
+<div class="w-full max-w-md bg-surface flex flex-col min-h-screen shadow-2xl relative overflow-x-hidden">
+<!-- TopAppBar (Mapped from Shared Components JSON) -->
+<header class="bg-surface-container-lowest text-primary shadow-sm flex justify-between items-center w-full px-4 h-16 max-w-md mx-auto sticky top-0 z-40 transition-colors duration-150">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary font-bold shadow-xs">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_circle">account_circle</span>
+</div>
+<div class="flex flex-col">
+<span class="text-headline-sm font-headline-sm tracking-tight text-primary">TOEIC Master Prep</span>
+<div class="flex items-center gap-1.5">
+<span class="text-label-md font-label-md text-on-surface-variant">Student #8421</span>
+<span class="text-[10px] text-outline">•</span>
+<span class="text-label-md font-label-md text-secondary font-semibold flex items-center">🔥 14 days</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors duration-150 active:scale-95 text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="px-4 py-4 space-y-5 flex-1">
+<!-- Section: Featured Exam Card -->
+<section class="bg-surface-container-lowest rounded-xl p-4 shadow-sm border border-outline-variant/60 relative overflow-hidden">
+<!-- Accent Glow -->
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-secondary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="bg-primary-container text-on-primary text-[11px] font-label-md uppercase tracking-wider px-2.5 py-0.5 rounded-full inline-flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[13px]" data-icon="verified">verified</span>
+            Official Mock 2024
+          </span>
+<span class="text-label-md font-label-md text-secondary font-semibold bg-surface-container-low px-2 py-0.5 rounded">
+            Target: 450+
+          </span>
+</div>
+<h2 class="text-headline-sm font-headline-sm text-primary mb-2">ETS TOEIC Reading Test 09</h2>
+<!-- Spec Tags with Icons -->
+<div class="flex flex-wrap items-center gap-2 mb-4 text-body-sm font-body-sm text-on-surface-variant">
+<div class="flex items-center gap-1 bg-surface-container-low px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="timer">timer</span>
+<span>75 mins</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-low px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="quiz">quiz</span>
+<span>100 questions</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-low px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="military_tech">military_tech</span>
+<span>Max 495 pts</span>
+</div>
+</div>
+<!-- Part Breakdown Bento Strip -->
+<div class="grid grid-cols-3 gap-2 p-2.5 bg-surface-container-low rounded-lg mb-4 text-center">
+<div class="flex flex-col border-r border-outline-variant/40 pr-1">
+<span class="text-label-md font-label-md text-on-surface-variant">Part 5</span>
+<span class="text-body-sm font-body-sm font-bold text-primary">30 Qs</span>
+<span class="text-[10px] text-outline truncate">Incomplete Sent.</span>
+</div>
+<div class="flex flex-col border-r border-outline-variant/40 px-1">
+<span class="text-label-md font-label-md text-on-surface-variant">Part 6</span>
+<span class="text-body-sm font-body-sm font-bold text-primary">16 Qs</span>
+<span class="text-[10px] text-outline truncate">Text Completion</span>
+</div>
+<div class="flex flex-col pl-1">
+<span class="text-label-md font-label-md text-on-surface-variant">Part 7</span>
+<span class="text-body-sm font-body-sm font-bold text-primary">54 Qs</span>
+<span class="text-[10px] text-outline truncate">Comprehension</span>
+</div>
+</div>
+<!-- Start CTA -->
+<button class="w-full bg-secondary-container hover:bg-primary-container text-on-secondary font-label-lg text-label-lg py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-all duration-150 active:scale-95 shadow-sm">
+<span>Start Exam</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</section>
+<!-- Section: Live Reading Practice View (Interactive Simulation) -->
+<section class="space-y-3">
+<!-- Live Header Bar & Timer -->
+<div class="flex items-center justify-between bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/60 shadow-xs">
+<div class="flex items-center gap-2">
+<span class="bg-secondary/10 text-secondary text-label-md font-label-md font-bold px-2 py-0.5 rounded">
+              Part 7
+            </span>
+<span class="text-body-sm font-body-sm font-semibold text-primary">
+              Q147 – 148 <span class="text-on-surface-variant font-normal">(Single Passage)</span>
+</span>
+</div>
+<!-- Prominent Countdown Timer Pill -->
+<div class="flex items-center gap-1.5 bg-surface-container-low text-primary-container font-label-timer text-label-timer px-2.5 py-1 rounded-full border border-secondary-container/20 shadow-xs">
+<span class="material-symbols-outlined text-[15px] text-secondary animate-pulse" data-icon="timer">timer</span>
+<span class="tracking-wider">74:58</span>
+</div>
+</div>
+<!-- Question Palette Mini-Indicators -->
+<div class="flex items-center justify-between px-1 text-label-md font-label-md">
+<span class="text-on-surface-variant">Session Progress</span>
+<span class="text-secondary font-bold">48 / 100 Answered</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden flex">
+<div class="bg-secondary h-full rounded-full transition-all duration-300" style="width: 48%"></div>
+</div>
+<!-- Reading Passage Container (Realistic Business Email) -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/60 p-4 shadow-sm space-y-3">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-2">
+<span class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary" data-icon="mail">mail</span>
+              Business E-Mail
+            </span>
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-semibold text-outline">Format: Internal memo</span>
+<button class="text-secondary hover:text-primary transition-colors flex items-center">
+<span class="material-symbols-outlined text-[17px]" data-icon="text_fields">text_fields</span>
+</button>
+</div>
+</div>
+<!-- Email Metadata Box -->
+<div class="bg-surface-container-low p-2.5 rounded-lg text-body-sm font-body-sm space-y-1 text-on-surface">
+<div class="flex"><span class="w-16 font-semibold text-on-surface-variant">To:</span> <span class="text-primary font-medium">all-staff@vertexlogistics.com</span></div>
+<div class="flex"><span class="w-16 font-semibold text-on-surface-variant">From:</span> <span>m.holloway@vertexlogistics.com (Marcus Holloway, Operations Director)</span></div>
+<div class="flex"><span class="w-16 font-semibold text-on-surface-variant">Date:</span> <span>October 24, 2024</span></div>
+<div class="flex items-baseline"><span class="w-16 font-semibold text-on-surface-variant">Subject:</span> <span class="font-bold text-primary">Updated Warehouse Dispatch Protocol &amp; New Inventory Software Rollout</span></div>
+</div>
+<!-- Email Body -->
+<div class="text-body-passage font-body-passage text-on-surface space-y-2.5 leading-relaxed pt-1">
+<p>Dear Team,</p>
+<p>
+              Please be advised that beginning next Monday, November 3, Vertex Logistics will officially transition our regional fulfillment facility to the <strong>Apex Inventory v4.2</strong> dispatch system. This comprehensive update is specifically engineered to reduce turnaround times on regional freight shipments and integrate barcode scanning directly into digital manifest sheets.
+            </p>
+<p>
+              All department leads are required to ensure their shift supervisors review the digitized checklist prior to Friday's closing shift. During the initial rollout week, our technical support desk will operate an on-site support kiosk adjacent to Loading Dock C to troubleshoot any hardware synchronization delays immediately.
+            </p>
+<p class="text-body-sm text-on-surface-variant italic">
+              Sincerely,<br/>Marcus Holloway<br/>Director of Logistics &amp; Facility Operations
+            </p>
+</div>
+</div>
+<!-- Question & Option Cards -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/60 p-4 shadow-sm space-y-3">
+<div class="flex items-start justify-between gap-2">
+<span class="text-label-md font-label-md bg-primary-container text-on-primary px-2 py-0.5 rounded">Q147</span>
+<p class="text-body-lg font-body-lg text-on-surface font-semibold flex-1">
+              What is the primary purpose of the e-mail?
+            </p>
+</div>
+<!-- Options -->
+<div class="space-y-2.5 pt-1">
+<!-- Option A (Unselected) -->
+<label class="flex items-center gap-3 p-3 rounded-lg border border-outline-variant/50 hover:bg-surface-container-low transition-colors cursor-pointer bg-surface-container-lowest">
+<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center font-bold text-body-sm text-on-surface">
+                A
+              </div>
+<span class="text-body-md font-body-md text-on-surface flex-1">To announce a promotion in the logistics department</span>
+</label>
+<!-- Option B (Selected State) -->
+<label class="flex items-center gap-3 p-3 rounded-lg border-2 border-secondary bg-surface-container-low shadow-xs cursor-pointer">
+<div class="w-7 h-7 rounded-full bg-secondary flex items-center justify-center font-bold text-body-sm text-on-secondary">
+                B
+              </div>
+<span class="text-body-md font-body-md text-primary font-semibold flex-1">To outline changes in shipping procedures and software</span>
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</label>
+<!-- Option C (Unselected) -->
+<label class="flex items-center gap-3 p-3 rounded-lg border border-outline-variant/50 hover:bg-surface-container-low transition-colors cursor-pointer bg-surface-container-lowest">
+<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center font-bold text-body-sm text-on-surface">
+                C
+              </div>
+<span class="text-body-md font-body-md text-on-surface flex-1">To request feedback on warehouse safety protocols</span>
+</label>
+<!-- Option D (Unselected) -->
+<label class="flex items-center gap-3 p-3 rounded-lg border border-outline-variant/50 hover:bg-surface-container-low transition-colors cursor-pointer bg-surface-container-lowest">
+<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center font-bold text-body-sm text-on-surface">
+                D
+              </div>
+<span class="text-body-md font-body-md text-on-surface flex-1">To reschedule an annual inventory audit</span>
+</label>
+</div>
+<!-- Question Action Footer inside Practice View -->
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/30">
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-secondary text-label-md font-label-md py-1.5 px-2 rounded hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="bookmark">bookmark</span>
+<span>Flag for Review</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="border border-outline-variant/70 text-primary hover:bg-surface-container-low px-3 py-1.5 rounded-lg text-label-md font-label-md flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_left">chevron_left</span>
+                Previous
+              </button>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-3.5 py-1.5 rounded-lg text-label-md font-label-md flex items-center gap-1 transition-all active:scale-95 shadow-xs">
+                Next
+                <span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Early Submission Validation Banner -->
+<div class="bg-surface-container-low border border-secondary-container/30 rounded-xl p-3 flex items-center justify-between shadow-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="warning">warning</span>
+<div class="text-body-sm font-body-sm">
+<span class="font-bold text-primary">98 of 100 answered</span>
+<span class="text-on-surface-variant block text-[11px]">2 marked items pending review</span>
+</div>
+</div>
+<button class="bg-secondary-container hover:bg-secondary text-on-secondary px-3 py-1.5 rounded-lg text-label-md font-label-md font-semibold transition-colors shadow-xs">
+          Submit Section
+        </button>
+</div>
+<!-- Section: Score Report Diagnostic Card (Recent Test) -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/60 p-4 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary">Test 08 Diagnostic Report</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Completed 2 days ago · ETS Official Scale</p>
+</div>
+<span class="bg-surface-container-high text-primary font-bold text-label-md font-label-md px-2.5 py-1 rounded-full border border-secondary-container/20">
+            CEFR B2 - Upper Intermediate
+          </span>
+</div>
+<!-- Metric Display Grid -->
+<div class="grid grid-cols-2 gap-3 items-center bg-surface-container-low p-3.5 rounded-lg">
+<div class="flex flex-col">
+<span class="text-label-md font-label-md text-on-surface-variant">Scaled Reading Score</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="text-score-metric font-score-metric text-primary">385</span>
+<span class="text-body-md font-body-md text-on-surface-variant font-bold">/ 495</span>
+</div>
+<span class="text-[11px] font-semibold text-secondary flex items-center gap-0.5 mt-0.5">
+<span class="material-symbols-outlined text-[13px]" data-icon="trending_up">trending_up</span>
+              +25 pts from Test 07
+            </span>
+</div>
+<!-- Accuracy Radial / Visual Gauge Representation -->
+<div class="flex flex-col items-center justify-center border-l border-outline-variant/40 pl-2">
+<div class="relative w-16 h-16 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-secondary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="78, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute text-label-lg font-label-lg font-bold text-primary">78%</span>
+</div>
+<span class="text-[11px] text-on-surface-variant font-medium mt-1">Overall Accuracy</span>
+</div>
+</div>
+<!-- Metric Tag Clusters -->
+<div class="grid grid-cols-2 gap-2 text-body-sm font-body-sm">
+<div class="bg-surface-container-low p-2 rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="speed">speed</span>
+<div>
+<span class="text-[11px] text-outline block leading-none">Speed</span>
+<span class="font-bold text-on-surface">44s / question</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-2 rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="star">star</span>
+<div>
+<span class="text-[11px] text-outline block leading-none">Strongest</span>
+<span class="font-bold text-on-surface">Part 5 (86%)</span>
+</div>
+</div>
+</div>
+<!-- Needs Review Highlight -->
+<div class="p-2.5 bg-surface-container-low rounded-lg flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-error" data-icon="priority_high">priority_high</span>
+<span class="text-on-surface"><strong>Needs Review:</strong> Part 7 Multi-passage (62%)</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Review CTA -->
+<button class="w-full bg-surface-container-low hover:bg-surface-container text-primary font-label-lg text-label-lg py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 border border-outline-variant/70 transition-colors">
+<span>Review Solutions &amp; Explanations</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="menu_book">menu_book</span>
+</button>
+</section>
+</main>
+<!-- BottomNavBar (Directly mapped from Shared Components JSON) -->
+<!-- Destination count: 4 | Labels: ['Dashboard', 'Practice', 'Mock Tests', 'Analytics'] -->
+<!-- Active Destination determined: 'Practice' for current live reading drill mode -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-lowest shadow-md max-w-md mx-auto transition-colors duration-150">
+<!-- Destination 1: Dashboard -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1 hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md mt-0.5">Dashboard</span>
+</a>
+<!-- Destination 2: Practice (ACTIVE) -->
+<a class="flex flex-col items-center justify-center text-primary font-bold py-1 hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="menu_book" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="text-label-md font-label-md mt-0.5">Practice</span>
+</a>
+<!-- Destination 3: Mock Tests -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1 hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="assignment">assignment</span>
+<span class="text-label-md font-label-md mt-0.5">Mock Tests</span>
+</a>
+<!-- Destination 4: Analytics -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1 hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="bar_chart">bar_chart</span>
+<span class="text-label-md font-label-md mt-0.5">Analytics</span>
+</a>
+</nav>
+</div>
+</body></html>

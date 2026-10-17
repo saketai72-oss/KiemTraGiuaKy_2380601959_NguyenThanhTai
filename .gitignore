@@ -1,0 +1,139 @@
+# ==========================================
+# Thư mục và file không cần thiết trong dự án
+# ==========================================
+TOEIC/
+GiuaKy/backend_old/
+backend_old/
+scratch/
+scratch_remote/
+__MACOSX/
+**/__MACOSX/
+
+# ==========================================
+# .NET / C# / Visual Studio
+# ==========================================
+**/bin/
+**/obj/
+**/[Bb]in/
+**/[Oo]bj/
+**/.vs/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.sln.docstates
+**/[Tt]est[Rr]esult*/
+**/[Bb]uild[Ll]og.*
+TestResult.xml
+project.lock.json
+project.fragment.lock.json
+artifacts/
+**/artifacts/
+packages/
+**/packages/
+!**/packages/build/
+*.ilk
+*.meta
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+
+# ==========================================
+# Flutter / Dart
+# ==========================================
+.dart_tool/
+**/.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+**/.packages
+.pub/
+.pub-cache/
+/build/
+GiuaKy/frontend/build/
+**/frontend/build/
+**/build/
+!GiuaKy/backend/build/
+!**/backend/build/
+/coverage/
+**/coverage/
+.widget_preview/
+**/.widget_preview/
+app.*.symbols
+app.*.map.json
+
+# Android
+**/android/local.properties
+**/android/.gradle
+**/android/captures/
+**/android/app/debug
+**/android/app/profile
+**/android/app/release
+**/.gradle/
+
+# iOS
+**/ios/Flutter/.last_build_id
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/.symlinks/
+
+# ==========================================
+# IDEs & Editors
+# ==========================================
+.idea/
+**/.idea/
+*.iml
+**/*.iml
+*.ipr
+*.iws
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# ==========================================
+# Python
+# ==========================================
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# ==========================================
+# Logs & Databases & Temporary Files
+# ==========================================
+*.log
+**/*.log
+**/[Ll]og/
+sqlserver_data/
+**/sqlserver_data/
+*.tmp
+*.temp
+*.bak
+
+# ==========================================
+# OS Generated Files
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini

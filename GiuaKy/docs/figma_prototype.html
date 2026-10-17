@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Figma - TOEIC Reading System (Mobile & Web Admin)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --figma-bg: #1e1e1e;
+      --figma-panel: #2c2c2c;
+      --figma-panel-border: #383838;
+      --figma-header: #222222;
+      --figma-text: #ffffff;
+      --figma-text-muted: #8e8e8e;
+      --figma-active: #0d99ff;
+      --figma-active-hover: #007be5;
+      --figma-selection: rgba(13, 153, 255, 0.2);
+      
+      --brand-primary: #1e3a8a;
+      --brand-blue: #2563eb;
+      --brand-accent: #3b82f6;
+      --brand-light: #eff6ff;
+      --color-success: #10b981;
+      --color-warning: #f59e0b;
+      --color-danger: #ef4444;
+      --color-dark: #0f172a;
+      --color-gray-100: #f1f5f9;
+      --color-gray-200: #e2e8f0;
+      --color-gray-300: #cbd5e1;
+      --color-gray-600: #475569;
+      --color-gray-700: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--figma-bg);
+      color: var(--figma-text);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+    }
+
+    /* TOP FIGMA HEADER */
+    header.figma-topbar {
+      height: 48px;
+      background: var(--figma-header);
+      border-bottom: 1px solid var(--figma-panel-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      z-index: 100;
+    }
+
+    .topbar-left, .topbar-center, .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .figma-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .figma-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #2a2a2a;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      color: #ccc;
+      border: 1px solid #3c3c3c;
+    }
+
+    .file-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .file-tag {
+      font-size: 10px;
+      background: #374151;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #93c5fd;
+    }
+
+    .tool-group {
+      display: flex;
+      background: #2a2a2a;
+      border-radius: 6px;
+      padding: 2px;
+      border: 1px solid #3a3a3a;
+    }
+
+    .tool-btn {
+      background: transparent;
+      border: none;
+      color: #ccc;
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+
+    .tool-btn:hover {
+      background: #3a3a3a;
+      color: #fff;
+    }
+
+    .tool-btn.active {
+      background: #404040;
+      color: #0d99ff;
+    }
+
+    .btn-present {
+      background: #0d99ff;
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+
+    .btn-present:hover {
+      background: #007be5;
+    }
+
+    .zoom-ctrl {
+      font-size: 11px;
+      color: #aaa;
+      background: #2a2a2a;
+      border: 1px solid #3a3a3a;
+      border-radius: 4px;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+
+    /* MAIN WORKSPACE */
+    .figma-workspace {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* LEFT SIDEBAR - LAYERS & PAGES */
+    aside.figma-sidebar-left {
+      width: 250px;
+      background: var(--figma-panel);
+      border-right: 1px solid var(--figma-panel-border);
+      display: flex;
+      flex-direction: column;
+      font-size: 12px;
+      z-index: 20;
+    }
+
+    .panel-section-title {
+      padding: 10px 14px;
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--figma-text-muted);
+      border-bottom: 1px solid #383838;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .page-list, .layer-list {
+      list-style: none;
+      overflow-y: auto;
+    }
+
+    .page-item, .layer-item {
+      padding: 7px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: #d1d5db;
+      border-left: 2px solid transparent;
+      transition: background 0.15s;
+    }
+
+    .page-item:hover, .layer-item:hover {
+      background: #353535;
+      color: #fff;
+    }
+
+    .page-item.active, .layer-item.active {
+      background: #383838;
+      color: #0d99ff;
+      border-left-color: #0d99ff;
+      font-weight: 500;
+    }
+
+    .layer-item.frame {
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .layer-indent {
+      margin-left: 14px;
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    /* CANVAS AREA */
+    main.figma-canvas {
+      flex: 1;
+      background-color: #181818;
+      background-image: radial-gradient(circle, #2e2e2e 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+      overflow: auto;
+      position: relative;
+      padding: 60px;
+      scroll-behavior: smooth;
+    }
+
+    .canvas-viewport {
+      display: flex;
+      flex-direction: column;
+      gap: 70px;
+      min-width: 3200px;
+      min-height: 2200px;
+      transform-origin: 0 0;
+    }
+
+    .canvas-row {
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+    }
+
+    .section-label-banner {
+      background: #252525;
+      border: 1px solid #3c3c3c;
+      padding: 10px 20px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .section-label-banner h2 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .section-label-banner span {
+      font-size: 12px;
+      color: #9ca3af;
+      background: #374151;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    /* ARTBOARD FRAME STYLING */
+    .figma-frame-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      cursor: default;
+    }
+
+    .frame-header-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #9ca3af;
+      padding: 0 4px;
+    }
+
+    .frame-header-label .title {
+      font-weight: 600;
+      color: #d1d5db;
+    }
+
+    .frame-header-label .dimensions {
+      font-size: 11px;
+      color: #6b7280;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .mobile-screen-frame {
+      width: 380px;
+      height: 780px;
+      background: #ffffff;
+      color: #111827;
+      border-radius: 40px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 0 10px #1f2937, 0 0 0 12px #374151;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      font-size: 14px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .mobile-screen-frame:hover {
+      box-shadow: 0 25px 50px -12px rgba(13, 153, 255, 0.3), 0 0 0 10px #1f2937, 0 0 0 13px #0d99ff;
+    }
+
+    /* PHONE NOTCH / STATUS BAR */
+    .phone-status-bar {
+      height: 44px;
+      background: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 24px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #111827;
+      border-top-left-radius: 36px;
+      border-top-right-radius: 36px;
+      z-index: 10;
+    }
+
+    .notch-pill {
+      width: 100px;
+      height: 20px;
+      background: #000;
+      border-radius: 20px;
+    }
+
+    .phone-home-indicator {
+      height: 20px;
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom-left-radius: 36px;
+      border-bottom-right-radius: 36px;
+    }
+
+    .home-bar {
+      width: 120px;
+      height: 4px;
+      background: #9ca3af;
+      border-radius: 4px;
+    }
+
+    /* DESKTOP ADMIN FRAME */
+    .desktop-screen-frame {
+      width: 960px;
+      height: 600px;
+      background: #f4f6f9;
+      color: #212529;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px #374151;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .desktop-screen-frame:hover {
+      box-shadow: 0 20px 40px rgba(13, 153, 255, 0.2), 0 0 0 2px #0d99ff;
+    }
+
+    .desktop-title-bar {
+      height: 36px;
+      background: #212529;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      gap: 8px;
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .window-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+
+    .browser-address {
+      margin-left: 20px;
+      background: #343a40;
+      color: #ced4da;
+      padding: 4px 16px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      width: 320px;
+    }
+
+    /* RIGHT SIDEBAR - INSPECTOR */
+    aside.figma-sidebar-right {
+      width: 280px;
+      background: var(--figma-panel);
+      border-left: 1px solid var(--figma-panel-border);
+      display: flex;
+      flex-direction: column;
+      font-size: 12px;
+      z-index: 20;
+    }
+
+    .tabs-header {
+      display: flex;
+      border-bottom: 1px solid var(--figma-panel-border);
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 10px;
+      background: transparent;
+      border: none;
+      color: var(--figma-text-muted);
+      font-weight: 500;
+      cursor: pointer;
+      text-align: center;
+      border-bottom: 2px solid transparent;
+    }
+
+    .tab-btn.active {
+      color: #fff;
+      border-bottom-color: #0d99ff;
+    }
+
+    .inspector-content {
+      padding: 14px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .prop-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+
+    .prop-label {
+      color: var(--figma-text-muted);
+    }
+
+    .prop-val {
+      font-family: 'JetBrains Mono', monospace;
+      background: #202020;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid #383838;
+      color: #e5e7eb;
+    }
+
+    .code-box {
+      background: #181818;
+      border: 1px solid #383838;
+      border-radius: 6px;
+      padding: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #a5f3fc;
+      white-space: pre-wrap;
+      line-height: 1.4;
+      margin-top: 10px;
+    }
+
+    /* PROTOTYPE MODAL SIMULATOR (PRESENT MODE) */
+    .present-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(10, 10, 10, 0.95);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .present-modal.active {
+      display: flex;
+    }
+
+    .present-bar {
+      position: absolute;
+      top: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #222;
+      padding: 8px 20px;
+      border-radius: 30px;
+      border: 1px solid #444;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .close-present {
+      background: #ef4444;
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    /* SCREEN 1: MOBILE CATALOG */
+    .screen-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      background: #f8fafc;
+    }
+
+    .app-header {
+      background: var(--brand-primary);
+      color: #fff;
+      padding: 16px 20px 20px;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 0 4px 12px rgba(30, 58, 138, 0.15);
+    }
+
+    .user-info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .user-badge {
+      font-size: 11px;
+      background: rgba(255,255,255,0.2);
+      padding: 4px 10px;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+    }
+
+    .exam-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px;
+      margin: 12px 16px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .exam-card:hover {
+      border-color: #3b82f6;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.15);
+    }
+
+    .exam-card.featured {
+      border: 1.5px solid #3b82f6;
+      background: linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%);
+    }
+
+    .btn-start-exam {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* SCREEN 2: READING EXAM (PART 5 & 7) */
+    .exam-top-bar {
+      background: #1e3a8a;
+      color: #fff;
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .timer-pill {
+      background: #ef4444;
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+
+    .exam-body {
+      flex: 1;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      overflow-y: auto;
+    }
+
+    .passage-card {
+      background: #fff;
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid #2563eb;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #334155;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .passage-header {
+      font-size: 11px;
+      font-weight: 700;
+      color: #2563eb;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .question-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 14px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .question-title {
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .option-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .option-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1.5px solid #e2e8f0;
+      background: #f8fafc;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.15s;
+    }
+
+    .option-item:hover {
+      border-color: #93c5fd;
+      background: #eff6ff;
+    }
+
+    .option-item.selected {
+      border-color: #2563eb;
+      background: #eff6ff;
+      color: #1e3a8a;
+      font-weight: 600;
+    }
+
+    .option-circle {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1.5px solid #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      background: #fff;
+    }
+
+    .option-item.selected .option-circle {
+      background: #2563eb;
+      color: #fff;
+      border-color: #2563eb;
+    }
+
+    /* SCREEN 3: SCORE REPORT */
+    .score-circle-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 0 16px;
+      background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
+      color: #fff;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+    }
+
+    .score-dial {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 8px solid rgba(255, 255, 255, 0.2);
+      border-top-color: #60a5fa;
+      border-right-color: #60a5fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .score-dial .num {
+      font-size: 38px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .score-dial .max {
+      font-size: 13px;
+      opacity: 0.8;
+    }
+
+    /* ADMINLTE WEB VIEW */
+    .admin-layout {
+      display: flex;
+      flex: 1;
+      height: calc(100% - 36px);
+      overflow: hidden;
+    }
+
+    .admin-sidebar {
+      width: 220px;
+      background: #343a40;
+      color: #c2c7d0;
+      display: flex;
+      flex-direction: column;
+      font-size: 13px;
+    }
+
+    .admin-brand {
+      padding: 14px 16px;
+      font-weight: 700;
+      color: #fff;
+      border-bottom: 1px solid #4b545c;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .admin-nav-item {
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      color: #c2c7d0;
+      transition: background 0.15s;
+    }
+
+    .admin-nav-item:hover, .admin-nav-item.active {
+      background: #007bff;
+      color: #fff;
+    }
+
+    .admin-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      background: #f4f6f9;
+    }
+
+    .admin-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .admin-stat-card {
+      background: #fff;
+      border-radius: 6px;
+      padding: 16px;
+      box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+      border-left: 4px solid #007bff;
+    }
+
+    .admin-stat-card .val {
+      font-size: 24px;
+      font-weight: 700;
+      color: #212529;
+    }
+
+    .admin-stat-card .desc {
+      font-size: 12px;
+      color: #6c757d;
+      margin-top: 4px;
+    }
+
+    .admin-card {
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .admin-card-header {
+      padding: 12px 18px;
+      border-bottom: 1px solid #e9ecef;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .upload-dropzone {
+      border: 2px dashed #007bff;
+      background: #f8faff;
+      border-radius: 8px;
+      padding: 24px;
+      text-align: center;
+      margin: 16px;
+      cursor: pointer;
+    }
+
+    /* DESIGN SYSTEM SWATCHES */
+    .color-swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding: 20px;
+    }
+
+    .swatch-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border: 1px solid #e5e7eb;
+    }
+
+    .swatch-color {
+      height: 70px;
+    }
+
+    .swatch-meta {
+      padding: 10px;
+      font-size: 11px;
+    }
+
+    .swatch-name {
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 2px;
+    }
+
+    .swatch-hex {
+      font-family: 'JetBrains Mono', monospace;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="figma-topbar">
+    <div class="topbar-left">
+      <div class="figma-logo">
+        <svg width="20" height="30" viewBox="0 0 38 57" fill="none">
+          <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
+          <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
+          <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/>
+          <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/>
+          <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/>
+        </svg>
+        <span>Figma Design Canvas</span>
+      </div>
+      <div class="file-title">
+        <span>TOEIC Reading System</span>
+        <span class="file-tag">v2.0 - ABP .NET 9 + Flutter</span>
+      </div>
+    </div>
+
+    <div class="topbar-center">
+      <div class="tool-group">
+        <button class="tool-btn active" id="tool-select" title="Move (V)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M4 0l16 12-7 2-4 9-2-1 4-8-7-2z"/></svg>
+        </button>
+        <button class="tool-btn" id="tool-frame" title="Frame (F)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+        </button>
+        <button class="tool-btn" id="tool-hand" title="Hand (H)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 11V6a2 2 0 0 0-4 0v4m0 0V4a2 2 0 0 0-4 0v7m0 0V2a2 2 0 0 0-4 0v11l-3-3a2 2 0 0 0-3 3l5 9a9 9 0 0 0 8 5h2a8 8 0 0 0 8-8v-6a2 2 0 0 0-4 0v3"/></svg>
+        </button>
+      </div>
+      <span class="zoom-ctrl" onclick="resetZoom()">Zoom: 100%</span>
+    </div>
+
+    <div class="topbar-right">
+      <button class="btn-present" onclick="openPrototypeModal()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <span>▶ Present Prototype</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CANVAS & PANELS -->
+  <div class="figma-workspace">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="figma-sidebar-left">
+      <div class="panel-section-title">
+        <span>Pages</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+      <ul class="page-list">
+        <li class="page-item active" onclick="scrollToSection('sec-mobile')">📱 Mobile App (Flutter)</li>
+        <li class="page-item" onclick="scrollToSection('sec-admin')">💻 Web Admin (ABP MVC)</li>
+        <li class="page-item" onclick="scrollToSection('sec-tokens')">🎨 Design System & Tokens</li>
+      </ul>
+
+      <div class="panel-section-title" style="margin-top: 10px;">
+        <span>Artboard Frames</span>
+      </div>
+      <ul class="layer-list">
+        <li class="layer-item frame" onclick="focusFrame('frame-catalog')"># 01. Mobile Catalog</li>
+        <li class="layer-item frame" onclick="focusFrame('frame-exam')"># 02. Reading Exam Test</li>
+        <li class="layer-item frame" onclick="focusFrame('frame-submit')"># 03. Early Submit Modal</li>
+        <li class="layer-item frame" onclick="focusFrame('frame-result')"># 04. Score & Review</li>
+        <li class="layer-item frame" onclick="focusFrame('frame-admin-list')"># 05. Admin Dashboard</li>
+        <li class="layer-item frame" onclick="focusFrame('frame-admin-preview')"># 06. Admin Word Preview</li>
+        <li class="layer-item frame" onclick="focusFrame('frame-admin-analytics')"># 07. Score Distribution</li>
+      </ul>
+    </aside>
+
+    <!-- FIGMA CANVAS -->
+    <main class="figma-canvas" id="canvas-scroll">
+      <div class="canvas-viewport" id="viewport">
+
+        <!-- SECTION 1: MOBILE APP FLOW -->
+        <div id="sec-mobile">
+          <div class="section-label-banner">
+            <h2>📱 FLUTTER MOBILE APP FLOW</h2>
+            <span>4 Screens • 380 × 780 pt • Không cần đăng nhập</span>
+          </div>
+
+          <div class="canvas-row">
+
+            <!-- FRAME 1: EXAM CATALOG -->
+            <div class="figma-frame-wrapper" id="frame-catalog" onclick="selectElement('Mobile / 01. Catalog', '380 × 780', '#ffffff', 'Screen: Home / Exam Selection')">
+              <div class="frame-header-label">
+                <span class="title">01. Mobile - Danh sách đề thi (Exam Catalog)</span>
+                <span class="dimensions">380 × 780</span>
+              </div>
+              <div class="mobile-screen-frame">
+                <div class="phone-status-bar">
+                  <span>9:41</span>
+                  <div class="notch-pill"></div>
+                  <span>5G 100%</span>
+                </div>
+                <div class="screen-content">
+                  <div class="app-header">
+                    <div class="user-info-row">
+                      <span style="font-weight: 700; font-size: 16px;">TOEIC Reading Master</span>
+                      <span class="user-badge">Thí sinh tự do</span>
+                    </div>
+                    <p style="font-size: 12px; opacity: 0.85;">Chọn đề thi Reading để bắt đầu rèn luyện kỹ năng</p>
+                  </div>
+
+                  <!-- FEATURED CARD -->
+                  <div class="exam-card featured">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                      <span style="background:#2563eb; color:#fff; font-size:10px; font-weight:700; padding:2px 8px; border-radius:10px;">ETS CHUẨN</span>
+                      <span style="color:#059669; font-size:11px; font-weight:600;">● Đã phát hành</span>
+                    </div>
+                    <h3 style="font-size:15px; font-weight:700; color:#1e293b;">ETS TOEIC Reading Test 09</h3>
+                    <div style="display:flex; gap:12px; font-size:12px; color:#64748b;">
+                      <span>⏱ 75 phút</span>
+                      <span>📝 100 câu hỏi</span>
+                      <span>🎯 Part 5, 6, 7</span>
+                    </div>
+                    <button class="btn-start-exam" onclick="openPrototypeModal()">
+                      <span>Bắt đầu làm bài</span>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                  </div>
+
+                  <!-- OTHER EXAM CARD -->
+                  <div class="exam-card">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                      <span style="background:#64748b; color:#fff; font-size:10px; font-weight:700; padding:2px 8px; border-radius:10px;">LUYỆN TẬP</span>
+                      <span style="color:#64748b; font-size:11px;">Đã làm: 2 lần</span>
+                    </div>
+                    <h3 style="font-size:15px; font-weight:700; color:#1e293b;">ETS TOEIC Reading Test 08</h3>
+                    <div style="display:flex; gap:12px; font-size:12px; color:#64748b;">
+                      <span>⏱ 75 phút</span>
+                      <span>📝 100 câu hỏi</span>
+                      <span>🏆 Cao nhất: 415</span>
+                    </div>
+                  </div>
+
+                  <div class="exam-card">
+                    <h3 style="font-size:15px; font-weight:700; color:#1e293b;">ETS TOEIC Reading Test 07</h3>
+                    <div style="display:flex; gap:12px; font-size:12px; color:#64748b;">
+                      <span>⏱ 75 phút</span>
+                      <span>📝 100 câu hỏi</span>
+                      <span>🏆 Cao nhất: 385</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="phone-home-indicator"><div class="home-bar"></div></div>
+              </div>
+            </div>
+
+            <!-- FRAME 2: READING EXAM (PART 5 & 7) -->
+            <div class="figma-frame-wrapper" id="frame-exam" onclick="selectElement('Mobile / 02. Exam View', '380 × 780', '#f8fafc', 'Screen: Exam Taking (Passage & Question)')">
+              <div class="frame-header-label">
+                <span class="title">02. Mobile - Màn hình làm bài (Reading Test)</span>
+                <span class="dimensions">380 × 780</span>
+              </div>
+              <div class="mobile-screen-frame">
+                <div class="phone-status-bar">
+                  <span>9:42</span>
+                  <div class="notch-pill"></div>
+                  <span>5G 100%</span>
+                </div>
+                <div class="screen-content">
+                  <div class="exam-top-bar">
+                    <span style="font-size: 13px; font-weight:600;">Câu 153/200</span>
+                    <div class="timer-pill">
+                      <span>⏱ 73:45</span>
+                    </div>
+                    <button style="background:#ef4444; color:#fff; border:none; padding:4px 10px; border-radius:6px; font-size:11px; font-weight:600; cursor:pointer;" onclick="focusFrame('frame-submit')">Nộp bài</button>
+                  </div>
+
+                  <div class="exam-body">
+                    <!-- PASSAGE -->
+                    <div class="passage-card">
+                      <div class="passage-header">Part 7: Questions 153-154 refer to the following email</div>
+                      <p><strong>From:</strong> Sandra Oh &lt;s.oh@metrotransit.org&gt;<br>
+                      <strong>To:</strong> All Commuters<br>
+                      <strong>Date:</strong> October 15<br>
+                      <strong>Subject:</strong> Service Maintenance Notice</p>
+                      <hr style="border:none; border-top:1px solid #e2e8f0; margin:6px 0;">
+                      <p>Please be advised that track repairs will take place between <em>Central Station</em> and <em>West Harbor</em> this Saturday. Shuttle buses will operate every 15 minutes.</p>
+                    </div>
+
+                    <!-- QUESTION -->
+                    <div class="question-box">
+                      <div class="question-title">153. What is the purpose of the email?</div>
+                      <div class="option-list">
+                        <div class="option-item">
+                          <div class="option-circle">A</div>
+                          <span>To announce a delay in train arrivals</span>
+                        </div>
+                        <div class="option-item selected">
+                          <div class="option-circle">B</div>
+                          <span>To give notice of scheduled maintenance</span>
+                        </div>
+                        <div class="option-item">
+                          <div class="option-circle">C</div>
+                          <span>To recruit new bus shuttle drivers</span>
+                        </div>
+                        <div class="option-item">
+                          <div class="option-circle">D</div>
+                          <span>To advertise discounts on transit passes</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; margin-top:auto;">
+                      <button style="background:#e2e8f0; color:#334155; border:none; padding:8px 16px; border-radius:6px; font-weight:600; font-size:12px;">◀ Câu trước</button>
+                      <button style="background:#fef3c7; color:#92400e; border:none; padding:8px 12px; border-radius:6px; font-weight:600; font-size:12px;">🔖 Gắn cờ</button>
+                      <button style="background:#2563eb; color:#fff; border:none; padding:8px 16px; border-radius:6px; font-weight:600; font-size:12px;">Câu sau ▶</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="phone-home-indicator"><div class="home-bar"></div></div>
+              </div>
+            </div>
+
+            <!-- FRAME 3: EARLY SUBMIT MODAL -->
+            <div class="figma-frame-wrapper" id="frame-submit" onclick="selectElement('Mobile / 03. Submit Dialog', '380 × 780', 'rgba(0,0,0,0.5)', 'Modal: Early Submission Validation')">
+              <div class="frame-header-label">
+                <span class="title">03. Mobile - Xác nhận nộp bài (Nộp sớm &gt;= 1-2 câu)</span>
+                <span class="dimensions">380 × 780</span>
+              </div>
+              <div class="mobile-screen-frame">
+                <div class="phone-status-bar">
+                  <span>9:45</span>
+                  <div class="notch-pill"></div>
+                  <span>5G 100%</span>
+                </div>
+                <div class="screen-content" style="background: rgba(15, 23, 42, 0.7); display:flex; justify-content:center; align-items:center; padding:20px;">
+                  <div style="background:#fff; border-radius:18px; padding:24px; width:100%; box-shadow:0 20px 25px -5px rgba(0,0,0,0.3);">
+                    <div style="text-align:center; margin-bottom:16px;">
+                      <div style="width:48px; height:48px; background:#fef3c7; color:#d97706; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:24px; margin-bottom:8px;">⚠️</div>
+                      <h3 style="font-size:16px; font-weight:700; color:#0f172a;">Xác nhận nộp bài thi?</h3>
+                      <p style="font-size:12px; color:#64748b; margin-top:4px;">Bạn đã trả lời <strong>18/100 câu</strong>. Thời gian còn lại <strong>71 phút</strong>.</p>
+                    </div>
+
+                    <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; padding:10px; font-size:11px; color:#1e40af; margin-bottom:16px;">
+                      ✅ <strong>Quy chế nộp sớm:</strong> Bạn đã làm trên 1-2 câu nên hệ thống sẽ chấp nhận tính điểm ngay lập tức.
+                    </div>
+
+                    <div style="display:flex; flex-direction:column; gap:8px;">
+                      <button style="background:#ef4444; color:#fff; border:none; padding:12px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer;" onclick="focusFrame('frame-result')">Nộp bài &amp; Chấm điểm ngay</button>
+                      <button style="background:#f1f5f9; color:#475569; border:none; padding:10px; border-radius:8px; font-weight:600; font-size:12px; cursor:pointer;" onclick="focusFrame('frame-exam')">Tiếp tục làm bài</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="phone-home-indicator"><div class="home-bar"></div></div>
+              </div>
+            </div>
+
+            <!-- FRAME 4: SCORE RESULT -->
+            <div class="figma-frame-wrapper" id="frame-result" onclick="selectElement('Mobile / 04. Score Report', '380 × 780', '#ffffff', 'Screen: Score Calculation & CEFR Breakdown')">
+              <div class="frame-header-label">
+                <span class="title">04. Mobile - Báo cáo kết quả (Score &amp; Review)</span>
+                <span class="dimensions">380 × 780</span>
+              </div>
+              <div class="mobile-screen-frame">
+                <div class="phone-status-bar">
+                  <span>9:46</span>
+                  <div class="notch-pill"></div>
+                  <span>5G 100%</span>
+                </div>
+                <div class="screen-content">
+                  <div class="score-circle-wrapper">
+                    <span style="font-size:12px; text-transform:uppercase; letter-spacing:1px; opacity:0.9;">KẾT QUẢ TOEIC READING</span>
+                    <div class="score-dial">
+                      <span class="num">385</span>
+                      <span class="max">/ 495 điểm</span>
+                    </div>
+                    <span style="background:rgba(255,255,255,0.2); padding:4px 12px; border-radius:12px; font-size:12px; font-weight:700;">CEFR: B2 (Upper-Intermediate)</span>
+                  </div>
+
+                  <div style="padding:16px; display:flex; flex-direction:column; gap:12px;">
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px; text-align:center;">
+                        <span style="font-size:11px; color:#64748b;">Số câu đúng</span>
+                        <div style="font-size:18px; font-weight:800; color:#10b981;">78 / 100</div>
+                      </div>
+                      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px; text-align:center;">
+                        <span style="font-size:11px; color:#64748b;">Thời gian làm</span>
+                        <div style="font-size:18px; font-weight:800; color:#3b82f6;">42 phút</div>
+                      </div>
+                    </div>
+
+                    <div style="background:#fff; border:1px solid #e2e8f0; border-radius:10px; padding:12px;">
+                      <span style="font-size:12px; font-weight:700; color:#1e293b; display:block; margin-bottom:8px;">Chi tiết từng phần Reading:</span>
+                      <div style="font-size:12px; display:flex; flex-direction:column; gap:6px;">
+                        <div style="display:flex; justify-content:space-between;">
+                          <span>Part 5 (Câu 101 - 130):</span>
+                          <strong>24/30 (80%)</strong>
+                        </div>
+                        <div style="display:flex; justify-content:space-between;">
+                          <span>Part 6 (Câu 131 - 146):</span>
+                          <strong>12/16 (75%)</strong>
+                        </div>
+                        <div style="display:flex; justify-content:space-between;">
+                          <span>Part 7 (Câu 147 - 200):</span>
+                          <strong>42/54 (78%)</strong>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button class="btn-start-exam" style="background:#1e3a8a;" onclick="focusFrame('frame-catalog')">Trang chủ đề thi</button>
+                  </div>
+                </div>
+                <div class="phone-home-indicator"><div class="home-bar"></div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- SECTION 2: WEB ADMIN (ABP MVC) -->
+        <div id="sec-admin">
+          <div class="section-label-banner">
+            <h2>💻 WEB ADMIN MANAGEMENT PORTAL (ASP.NET BOILERPLATE)</h2>
+            <span>3 Frames • 960 × 600 pt • AdminLTE 3 • Quản lý đề thi &amp; Phổ điểm</span>
+          </div>
+
+          <div class="canvas-row">
+
+            <!-- FRAME 5: ADMIN DASHBOARD -->
+            <div class="figma-frame-wrapper" id="frame-admin-list" onclick="selectElement('Admin / 05. Exam Management', '960 × 600', '#f4f6f9', 'View: AdminLTE Dashboard & Word Upload')">
+              <div class="frame-header-label">
+                <span class="title">05. Web Admin - Quản lý &amp; Tải lên đề thi (.docx)</span>
+                <span class="dimensions">960 × 600</span>
+              </div>
+              <div class="desktop-screen-frame">
+                <div class="desktop-title-bar">
+                  <div class="window-dots">
+                    <div class="window-dot dot-red"></div>
+                    <div class="window-dot dot-yellow"></div>
+                    <div class="window-dot dot-green"></div>
+                  </div>
+                  <div class="browser-address">http://localhost:5000/Exams</div>
+                </div>
+
+                <div class="admin-layout">
+                  <div class="admin-sidebar">
+                    <div class="admin-brand">
+                      <span>📘 TOEIC AdminLTE</span>
+                    </div>
+                    <div class="admin-nav-item active">
+                      <span>📋 Quản lý Đề thi</span>
+                    </div>
+                    <div class="admin-nav-item">
+                      <span>👥 Danh sách Thí sinh</span>
+                    </div>
+                    <div class="admin-nav-item">
+                      <span>📊 Báo cáo &amp; Phổ điểm</span>
+                    </div>
+                  </div>
+
+                  <div class="admin-body">
+                    <div class="admin-stat-grid">
+                      <div class="admin-stat-card">
+                        <div class="val">12</div>
+                        <div class="desc">Tổng đề thi</div>
+                      </div>
+                      <div class="admin-stat-card" style="border-left-color:#28a745;">
+                        <div class="val">8</div>
+                        <div class="desc">Đã phát hành</div>
+                      </div>
+                      <div class="admin-stat-card" style="border-left-color:#ffc107;">
+                        <div class="val">450</div>
+                        <div class="desc">Lượt làm bài</div>
+                      </div>
+                      <div class="admin-stat-card" style="border-left-color:#17a2b8;">
+                        <div class="val">368.5</div>
+                        <div class="desc">Điểm trung bình</div>
+                      </div>
+                    </div>
+
+                    <div class="admin-card">
+                      <div class="admin-card-header">
+                        <span>📤 Tải lên Đề thi Word (.docx) mới</span>
+                      </div>
+                      <div class="upload-dropzone">
+                        <div style="font-size:24px; margin-bottom:4px;">📄</div>
+                        <strong style="color:#007bff;">Kéo thả file ETS_Test_09.docx vào đây hoặc chọn file</strong>
+                        <p style="font-size:11px; color:#6c757d; margin-top:4px;">Hỗ trợ chuẩn thẻ [EXAM], [PART], [GROUP], [Q], [KEY] - Rollback 100% nếu có lỗi</p>
+                      </div>
+                    </div>
+
+                    <div class="admin-card">
+                      <div class="admin-card-header">
+                        <span>Danh sách Đề thi TOEIC hiện có</span>
+                      </div>
+                      <table style="width:100%; border-collapse:collapse; font-size:12px;">
+                        <thead style="background:#e9ecef; text-align:left;">
+                          <tr>
+                            <th style="padding:8px 12px;">#</th>
+                            <th style="padding:8px 12px;">Tên Đề thi</th>
+                            <th style="padding:8px 12px;">Thời lượng</th>
+                            <th style="padding:8px 12px;">Số câu</th>
+                            <th style="padding:8px 12px;">Trạng thái</th>
+                            <th style="padding:8px 12px;">Thao tác</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr style="border-bottom:1px solid #dee2e6;">
+                            <td style="padding:8px 12px;">1</td>
+                            <td style="padding:8px 12px; font-weight:600;">ETS TOEIC Reading Test 09</td>
+                            <td style="padding:8px 12px;">75 phút</td>
+                            <td style="padding:8px 12px;">100 câu</td>
+                            <td style="padding:8px 12px;"><span style="background:#28a745; color:#fff; padding:2px 6px; border-radius:4px; font-size:10px;">Phát hành</span></td>
+                            <td style="padding:8px 12px;">
+                              <button style="background:#17a2b8; color:#fff; border:none; padding:3px 8px; border-radius:4px; font-size:11px;" onclick="focusFrame('frame-admin-preview')">Xem trước</button>
+                              <button style="background:#6c757d; color:#fff; border:none; padding:3px 8px; border-radius:4px; font-size:11px;" onclick="focusFrame('frame-admin-analytics')">Phổ điểm</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- FRAME 6: ADMIN PREVIEW & EDIT -->
+            <div class="figma-frame-wrapper" id="frame-admin-preview" onclick="selectElement('Admin / 06. Preview & Edit', '960 × 600', '#f4f6f9', 'View: WYSIWYG Passage & Question Editor')">
+              <div class="frame-header-label">
+                <span class="title">06. Web Admin - Xem trước &amp; Hiệu chỉnh câu hỏi</span>
+                <span class="dimensions">960 × 600</span>
+              </div>
+              <div class="desktop-screen-frame">
+                <div class="desktop-title-bar">
+                  <div class="window-dots">
+                    <div class="window-dot dot-red"></div>
+                    <div class="window-dot dot-yellow"></div>
+                    <div class="window-dot dot-green"></div>
+                  </div>
+                  <div class="browser-address">http://localhost:5000/Exams/Preview/1</div>
+                </div>
+
+                <div class="admin-layout">
+                  <div class="admin-body" style="padding:16px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                      <h4 style="font-size:15px; font-weight:700;">Xem trước: ETS TOEIC Reading Test 09 (100 câu hỏi)</h4>
+                      <button style="background:#28a745; color:#fff; border:none; padding:6px 12px; border-radius:4px; font-size:11px; font-weight:600;">Lưu thay đổi</button>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns:300px 1fr; gap:16px; height:500px;">
+                      <!-- TREE OF QUESTIONS -->
+                      <div style="background:#fff; border:1px solid #dee2e6; border-radius:6px; overflow-y:auto; padding:10px;">
+                        <strong style="font-size:12px; color:#495057;">Cây cấu trúc đề thi:</strong>
+                        <div style="font-size:12px; margin-top:8px;">
+                          <div style="font-weight:600; color:#007bff;">📁 Part 5: Incomplete Sentences (30)</div>
+                          <div style="padding-left:14px; color:#6c757d;">• Câu 101 - UTMOST IMPORTANCE</div>
+                          <div style="padding-left:14px; color:#6c757d;">• Câu 102 - REGISTRATION FEE</div>
+                          <div style="font-weight:600; color:#007bff; margin-top:6px;">📁 Part 6: Text Completion (16)</div>
+                          <div style="font-weight:600; color:#007bff; margin-top:6px;">📁 Part 7: Reading Comprehension (54)</div>
+                          <div style="padding-left:14px; color:#28a745; font-weight:600;">▶ Đoạn 153-154 (Email)</div>
+                        </div>
+                      </div>
+
+                      <!-- EDIT PANEL -->
+                      <div style="background:#fff; border:1px solid #dee2e6; border-radius:6px; overflow-y:auto; padding:16px;">
+                        <div style="margin-bottom:12px;">
+                          <label style="font-size:11px; font-weight:700; color:#495057;">Nội dung đoạn văn [PASSAGE]:</label>
+                          <textarea style="width:100%; height:90px; font-size:12px; padding:8px; border:1px solid #ced4da; border-radius:4px; font-family:'JetBrains Mono', monospace;">From: Sandra Oh <s.oh@metrotransit.org>
+To: All Commuters
+Subject: Service Maintenance Notice</textarea>
+                        </div>
+
+                        <div>
+                          <label style="font-size:11px; font-weight:700; color:#495057;">Câu hỏi 153:</label>
+                          <input type="text" value="What is the purpose of the email?" style="width:100%; padding:6px; font-size:12px; border:1px solid #ced4da; border-radius:4px; margin-bottom:8px;">
+                          
+                          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:12px;">
+                            <input type="text" value="A. To announce a delay" style="padding:6px; border:1px solid #ced4da; border-radius:4px;">
+                            <input type="text" value="B. To give notice (KEY)" style="padding:6px; border:1.5px solid #28a745; background:#e8f5e9; border-radius:4px; font-weight:600;">
+                            <input type="text" value="C. To recruit new drivers" style="padding:6px; border:1px solid #ced4da; border-radius:4px;">
+                            <input type="text" value="D. To advertise discounts" style="padding:6px; border:1px solid #ced4da; border-radius:4px;">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- FRAME 7: ADMIN ANALYTICS & BELL CURVE -->
+            <div class="figma-frame-wrapper" id="frame-admin-analytics" onclick="selectElement('Admin / 07. Score Analytics', '960 × 600', '#f4f6f9', 'View: Bell Curve & Score Distribution')">
+              <div class="frame-header-label">
+                <span class="title">07. Web Admin - Phân tích phổ điểm thi (Analytics)</span>
+                <span class="dimensions">960 × 600</span>
+              </div>
+              <div class="desktop-screen-frame">
+                <div class="desktop-title-bar">
+                  <div class="window-dots">
+                    <div class="window-dot dot-red"></div>
+                    <div class="window-dot dot-yellow"></div>
+                    <div class="window-dot dot-green"></div>
+                  </div>
+                  <div class="browser-address">http://localhost:5000/Exams/Analytics/1</div>
+                </div>
+
+                <div class="admin-layout">
+                  <div class="admin-body" style="padding:20px;">
+                    <h4 style="font-size:15px; font-weight:700; margin-bottom:14px;">Thống kê phổ điểm: ETS TOEIC Reading Test 09</h4>
+
+                    <div class="admin-card" style="padding:16px;">
+                      <div style="font-weight:600; font-size:13px; margin-bottom:12px;">Biểu đồ phân bố điểm số (Bell Curve 0 - 495 điểm):</div>
+                      
+                      <!-- CSS BELL CURVE CHART -->
+                      <div style="display:flex; align-items:flex-end; gap:20px; height:180px; padding:0 20px 20px; border-bottom:2px solid #dee2e6;">
+                        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;">
+                          <div style="width:100%; height:25px; background:#e0f2fe; border-radius:4px 4px 0 0; text-align:center; font-size:10px; color:#0369a1;">5 hs</div>
+                          <span style="font-size:11px; color:#64748b;">0 - 100</span>
+                        </div>
+                        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;">
+                          <div style="width:100%; height:60px; background:#bae6fd; border-radius:4px 4px 0 0; text-align:center; font-size:10px; color:#0369a1;">14 hs</div>
+                          <span style="font-size:11px; color:#64748b;">105 - 200</span>
+                        </div>
+                        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;">
+                          <div style="width:100%; height:120px; background:#38bdf8; border-radius:4px 4px 0 0; text-align:center; font-size:10px; color:#fff; font-weight:700;">45 hs</div>
+                          <span style="font-size:11px; color:#64748b;">205 - 300</span>
+                        </div>
+                        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;">
+                          <div style="width:100%; height:160px; background:#0284c7; border-radius:4px 4px 0 0; text-align:center; font-size:10px; color:#fff; font-weight:700;">62 hs</div>
+                          <span style="font-size:11px; color:#64748b; font-weight:700;">305 - 400</span>
+                        </div>
+                        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;">
+                          <div style="width:100%; height:50px; background:#0369a1; border-radius:4px 4px 0 0; text-align:center; font-size:10px; color:#fff;">16 hs</div>
+                          <span style="font-size:11px; color:#64748b;">405 - 495</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                      <div class="admin-card" style="padding:14px;">
+                        <span style="font-weight:600; font-size:12px; color:#dc3545;">Top 3 câu hỏi tỷ lệ sai cao nhất:</span>
+                        <ul style="font-size:12px; margin-top:8px; padding-left:16px; color:#495057;">
+                          <li><strong>Câu 134 (Part 6):</strong> 71% chọn nhầm thì hoàn thành</li>
+                          <li><strong>Câu 189 (Part 7):</strong> 68% đọc sót chi tiết bảng biểu</li>
+                          <li><strong>Câu 118 (Part 5):</strong> 62% sai liên từ tương phản</li>
+                        </ul>
+                      </div>
+                      <div class="admin-card" style="padding:14px;">
+                        <span style="font-weight:600; font-size:12px; color:#28a745;">Tỷ lệ sinh viên đạt mốc chuẩn:</span>
+                        <ul style="font-size:12px; margin-top:8px; padding-left:16px; color:#495057;">
+                          <li>Đạt chuẩn tốt nghiệp (≥ 250 điểm Reading): <strong>88.2%</strong></li>
+                          <li>Đạt chuẩn khá giỏi (≥ 350 điểm Reading): <strong>54.5%</strong></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- SECTION 3: DESIGN SYSTEM & TOKENS -->
+        <div id="sec-tokens">
+          <div class="section-label-banner">
+            <h2>🎨 DESIGN SYSTEM &amp; UI TOKENS</h2>
+            <span>Color Palette • Typography Scale • Elevation • Components</span>
+          </div>
+
+          <div class="canvas-row">
+            <div class="figma-frame-wrapper" style="width:960px;" onclick="selectElement('Design System Tokens', '960 × 400', '#ffffff', 'Design Tokens: Color Palette, Typography & Badges')">
+              <div class="frame-header-label">
+                <span class="title">Color Palette &amp; Component Tokens</span>
+                <span class="dimensions">960 × 400</span>
+              </div>
+              <div style="background:#fff; border-radius:12px; border:1px solid #374151; overflow:hidden;">
+                <div class="color-swatch-grid">
+                  <div class="swatch-card">
+                    <div class="swatch-color" style="background:#1e3a8a;"></div>
+                    <div class="swatch-meta">
+                      <div class="swatch-name">Brand Primary</div>
+                      <div class="swatch-hex">#1E3A8A</div>
+                    </div>
+                  </div>
+                  <div class="swatch-card">
+                    <div class="swatch-color" style="background:#2563eb;"></div>
+                    <div class="swatch-meta">
+                      <div class="swatch-name">Accent Blue</div>
+                      <div class="swatch-hex">#2563EB</div>
+                    </div>
+                  </div>
+                  <div class="swatch-card">
+                    <div class="swatch-color" style="background:#10b981;"></div>
+                    <div class="swatch-meta">
+                      <div class="swatch-name">Success / Correct</div>
+                      <div class="swatch-hex">#10B981</div>
+                    </div>
+                  </div>
+                  <div class="swatch-card">
+                    <div class="swatch-color" style="background:#ef4444;"></div>
+                    <div class="swatch-meta">
+                      <div class="swatch-name">Danger / Timer</div>
+                      <div class="swatch-hex">#EF4444</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="padding:0 20px 20px; font-size:12px; color:#475569;">
+                  <strong style="color:#0f172a; display:block; margin-bottom:8px;">Font Typography System:</strong>
+                  <p>• Display: <code>Inter Bold 24px (Line-height 32px)</code></p>
+                  <p>• Header: <code>Inter SemiBold 18px (Line-height 24px)</code></p>
+                  <p>• Body Reading Passage: <code>Inter Regular 14px (Line-height 22px)</code></p>
+                  <p>• Monospace / Code / Timers: <code>JetBrains Mono Medium 13px</code></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- RIGHT SIDEBAR: DESIGN INSPECTOR -->
+    <aside class="figma-sidebar-right">
+      <div class="tabs-header">
+        <button class="tab-btn active" id="tab-design">Design</button>
+        <button class="tab-btn" id="tab-prototype">Prototype</button>
+        <button class="tab-btn" id="tab-inspect">Inspect</button>
+      </div>
+
+      <div class="inspector-content">
+        <div style="font-weight:700; font-size:13px; color:#fff; margin-bottom:12px;" id="inspect-title">Mobile / 01. Catalog</div>
+        
+        <div class="prop-row">
+          <span class="prop-label">Dimensions</span>
+          <span class="prop-val" id="inspect-dim">380 × 780 pt</span>
+        </div>
+        <div class="prop-row">
+          <span class="prop-label">Fill</span>
+          <span class="prop-val" id="inspect-fill">#FFFFFF</span>
+        </div>
+        <div class="prop-row">
+          <span class="prop-label">Border Radius</span>
+          <span class="prop-val">40px (iOS Frame)</span>
+        </div>
+        <div class="prop-row">
+          <span class="prop-label">Elevation</span>
+          <span class="prop-val">0 25px 50px -12px</span>
+        </div>
+
+        <div style="margin-top:20px;">
+          <span style="font-weight:600; color:#fff; font-size:11px; text-transform:uppercase;">CSS Code Export</span>
+          <div class="code-box" id="inspect-code">/* Mobile Screen Container */
+width: 380px;
+height: 780px;
+background: #ffffff;
+border-radius: 40px;
+box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6);
+overflow: hidden;</div>
+        </div>
+
+        <div style="margin-top:20px; background:#222; padding:10px; border-radius:6px; border:1px solid #383838;">
+          <span style="color:#10b981; font-weight:700; font-size:11px;">● Interaction Trigger</span>
+          <p style="color:#aaa; font-size:11px; margin-top:4px;" id="inspect-desc">Clicking 'Bắt đầu làm bài' navigates directly to Exam Screen with 75-minute countdown.</p>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- INTERACTIVE PROTOTYPE PRESENTATION MODAL -->
+  <div class="present-modal" id="protoModal">
+    <div class="present-bar">
+      <span style="color:#fff; font-size:13px; font-weight:600;">📱 Interactive Flutter Prototype Demo</span>
+      <button class="close-present" onclick="closePrototypeModal()">✕ Đóng Trình chiếu (ESC)</button>
+    </div>
+
+    <!-- LIVE PHONE MOCKUP -->
+    <div class="mobile-screen-frame" style="width: 390px; height: 810px; box-shadow: 0 0 80px rgba(0,0,0,0.9);">
+      <div class="phone-status-bar">
+        <span>9:41</span>
+        <div class="notch-pill"></div>
+        <span>5G 100%</span>
+      </div>
+
+      <div class="screen-content" id="live-screen-container">
+        <!-- STEP 1: CATALOG -->
+        <div id="proto-step-catalog">
+          <div class="app-header">
+            <div class="user-info-row">
+              <span style="font-weight: 700; font-size: 16px;">TOEIC Reading Master</span>
+              <span class="user-badge">Thí sinh tự do</span>
+            </div>
+            <p style="font-size: 12px; opacity: 0.85;">Chọn đề thi Reading để bắt đầu</p>
+          </div>
+
+          <div class="exam-card featured">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="background:#2563eb; color:#fff; font-size:10px; font-weight:700; padding:2px 8px; border-radius:10px;">ETS CHUẨN</span>
+              <span style="color:#059669; font-size:11px; font-weight:600;">● Mới phát hành</span>
+            </div>
+            <h3 style="font-size:16px; font-weight:700; color:#1e293b;">ETS TOEIC Reading Test 09</h3>
+            <div style="display:flex; gap:12px; font-size:12px; color:#64748b;">
+              <span>⏱ 75 phút</span>
+              <span>📝 100 câu hỏi</span>
+            </div>
+            <button class="btn-start-exam" onclick="goToProtoExam()">
+              <span>Vào thi ngay</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2: EXAM TAKING -->
+        <div id="proto-step-exam" style="display:none; height:100%; flex-direction:column;">
+          <div class="exam-top-bar">
+            <span style="font-size: 13px; font-weight:600;">Câu 153/200</span>
+            <div class="timer-pill" id="proto-timer">⏱ 74:58</div>
+            <button style="background:#ef4444; color:#fff; border:none; padding:4px 10px; border-radius:6px; font-size:11px; font-weight:600; cursor:pointer;" onclick="showProtoSubmitModal()">Nộp bài</button>
+          </div>
+
+          <div class="exam-body" style="flex:1;">
+            <div class="passage-card">
+              <div class="passage-header">Part 7: Questions 153-154 refer to the following email</div>
+              <p><strong>From:</strong> Sandra Oh &lt;s.oh@metrotransit.org&gt;<br>
+              <strong>To:</strong> All Commuters<br>
+              <strong>Subject:</strong> Service Maintenance Notice</p>
+              <hr style="border:none; border-top:1px solid #e2e8f0; margin:6px 0;">
+              <p>Please be advised that track repairs will take place between Central Station and West Harbor this Saturday. Shuttle buses will operate every 15 minutes.</p>
+            </div>
+
+            <div class="question-box">
+              <div class="question-title">153. What is the purpose of the email?</div>
+              <div class="option-list">
+                <div class="option-item" onclick="pickOption(this)">
+                  <div class="option-circle">A</div>
+                  <span>To announce a delay in train arrivals</span>
+                </div>
+                <div class="option-item" onclick="pickOption(this)">
+                  <div class="option-circle">B</div>
+                  <span>To give notice of scheduled maintenance</span>
+                </div>
+                <div class="option-item" onclick="pickOption(this)">
+                  <div class="option-circle">C</div>
+                  <span>To recruit new bus shuttle drivers</span>
+                </div>
+                <div class="option-item" onclick="pickOption(this)">
+                  <div class="option-circle">D</div>
+                  <span>To advertise discounts on transit passes</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- SUBMIT MODAL IN PROTOTYPE -->
+            <div id="proto-modal-dialog" style="display:none; background:#fff; border:2px solid #ef4444; border-radius:12px; padding:16px; margin-top:10px;">
+              <div style="font-size:13px; font-weight:700; color:#ef4444; margin-bottom:6px;">⚠️ Xác nhận nộp sớm</div>
+              <p style="font-size:12px; color:#475569; margin-bottom:10px;">Bạn đã trả lời ít nhất 1 câu. Điểm thi sẽ được tính ngay lập tức.</p>
+              <div style="display:flex; gap:8px;">
+                <button style="flex:1; background:#ef4444; color:#fff; border:none; padding:8px; border-radius:6px; font-weight:700; font-size:12px; cursor:pointer;" onclick="goToProtoResult()">Đồng ý nộp</button>
+                <button style="flex:1; background:#e2e8f0; color:#475569; border:none; padding:8px; border-radius:6px; font-size:12px; cursor:pointer;" onclick="hideProtoSubmitModal()">Làm tiếp</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: RESULT -->
+        <div id="proto-step-result" style="display:none; height:100%; flex-direction:column;">
+          <div class="score-circle-wrapper">
+            <span style="font-size:12px; text-transform:uppercase; letter-spacing:1px; opacity:0.9;">KẾT QUẢ ĐẠT ĐƯỢC</span>
+            <div class="score-dial">
+              <span class="num">385</span>
+              <span class="max">/ 495 điểm</span>
+            </div>
+            <span style="background:rgba(255,255,255,0.2); padding:4px 12px; border-radius:12px; font-size:12px; font-weight:700;">CEFR: B2 (Upper-Intermediate)</span>
+          </div>
+
+          <div style="padding:16px; display:flex; flex-direction:column; gap:12px;">
+            <div style="background:#fff; border:1px solid #e2e8f0; border-radius:8px; padding:12px; text-align:center;">
+              <div style="font-size:12px; color:#64748b;">Số câu đúng</div>
+              <div style="font-size:22px; font-weight:800; color:#10b981;">78 / 100</div>
+            </div>
+            <button class="btn-start-exam" style="background:#1e3a8a;" onclick="resetProtoFlow()">Làm lại thử nghiệm</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="phone-home-indicator"><div class="home-bar"></div></div>
+    </div>
+  </div>
+
+  <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function focusFrame(frameId) {
+      const el = document.getElementById(frameId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        el.classList.add('selected');
+        setTimeout(() => el.classList.remove('selected'), 1000);
+      }
+    }
+
+    function selectElement(title, dim, fill, desc) {
+      document.getElementById('inspect-title').innerText = title;
+      document.getElementById('inspect-dim').innerText = dim;
+      document.getElementById('inspect-fill').innerText = fill;
+      document.getElementById('inspect-desc').innerText = desc;
+      document.getElementById('inspect-code').innerText = `/* Element: ${title} */\ndimensions: ${dim};\nbackground: ${fill};\ndisplay: flex;\nbox-shadow: 0 20px 40px rgba(0,0,0,0.5);`;
+    }
+
+    function resetZoom() {
+      document.getElementById('viewport').style.transform = 'scale(1)';
+    }
+
+    /* INTERACTIVE PROTOTYPE LOGIC */
+    function openPrototypeModal() {
+      document.getElementById('protoModal').classList.add('active');
+      resetProtoFlow();
+    }
+
+    function closePrototypeModal() {
+      document.getElementById('protoModal').classList.remove('active');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closePrototypeModal();
+    });
+
+    function goToProtoExam() {
+      document.getElementById('proto-step-catalog').style.display = 'none';
+      document.getElementById('proto-step-exam').style.display = 'flex';
+      document.getElementById('proto-step-result').style.display = 'none';
+    }
+
+    function showProtoSubmitModal() {
+      document.getElementById('proto-modal-dialog').style.display = 'block';
+    }
+
+    function hideProtoSubmitModal() {
+      document.getElementById('proto-modal-dialog').style.display = 'none';
+    }
+
+    function goToProtoResult() {
+      document.getElementById('proto-step-exam').style.display = 'none';
+      document.getElementById('proto-step-result').style.display = 'flex';
+    }
+
+    function resetProtoFlow() {
+      document.getElementById('proto-step-catalog').style.display = 'block';
+      document.getElementById('proto-step-exam').style.display = 'none';
+      document.getElementById('proto-step-result').style.display = 'none';
+      document.getElementById('proto-modal-dialog').style.display = 'none';
+    }
+
+    function pickOption(el) {
+      const parent = el.closest('.option-list');
+      parent.querySelectorAll('.option-item').forEach(item => item.classList.remove('selected'));
+      el.classList.add('selected');
+    }
+  </script>
+</body>
+</html>

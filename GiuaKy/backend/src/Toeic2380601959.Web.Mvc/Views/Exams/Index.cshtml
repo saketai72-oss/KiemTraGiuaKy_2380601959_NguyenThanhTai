@@ -1,0 +1,225 @@
+@model IEnumerable<Toeic2380601959.Toeic.Exam>
+@{
+    ViewData["Title"] = "Quản lý Đề thi TOEIC Reading";
+}
+
+<div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold mb-1 text-primary"><i class="fas fa-file-alt me-2"></i>Quản lý Đề thi TOEIC Reading</h2>
+            <p class="text-muted mb-0">Hệ thống quản lý, biên tập và xuất bản đề thi dành cho Giảng viên (ASP.NET Boilerplate)</p>
+        </div>
+        <div>
+            <button class="btn btn-primary btn-lg shadow-sm" data-toggle="modal" data-target="#uploadModal">
+                <i class="fas fa-upload me-2"></i>Tải lên đề thi (.docx)
+            </button>
+        </div>
+    </div>
+
+    <!-- Alert container for AJAX results -->
+    <div id="alertContainer"></div>
+
+    <!-- Card danh sách đề thi -->
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-header bg-white py-3 border-0">
+            <h5 class="card-title fw-bold mb-0 text-dark">Danh sách Đề thi</h5>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-4">Tên Đề thi</th>
+                            <th>Thời lượng</th>
+                            <th>Số câu hỏi</th>
+                            <th>Lượt thi</th>
+                            <th>Trạng thái xuất bản</th>
+                            <th>Ngày tạo</th>
+                            <th class="text-end pe-4">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="examTableBody">
+                        @if (!Model.Any())
+                        {
+                            <tr>
+                                <td colspan="7" class="text-center py-5 text-muted">
+                                    <i class="fas fa-inbox fs-1 d-block mb-2"></i>
+                                    Chưa có đề thi nào trong hệ thống. Hãy bấm <strong>Tải lên đề thi (.docx)</strong> để bắt đầu.
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @foreach (var exam in Model)
+                            {
+                                <tr id="row-exam-@exam.Id">
+                                    <td class="ps-4">
+                                        <div class="fw-bold text-dark">@exam.Title</div>
+                                        <small class="text-muted">Mã đề: #@exam.Id</small>
+                                    </td>
+                                    <td><span class="badge badge-light border">@exam.DurationMinutes phút</span></td>
+                                    <td><span class="badge badge-info border">@exam.TotalQuestions câu</span></td>
+                                    <td>
+                                        <span class="badge badge-secondary fw-semibold">
+                                            @exam.ExamAttempts.Count lượt
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="custom-control custom-switch">
+                                            <input class="custom-control-input publish-switch" type="checkbox" id="switch-@exam.Id"
+                                                   data-id="@exam.Id" @(exam.IsPublished ? "checked" : "")>
+                                            <label class="custom-control-label status-label text-@(exam.IsPublished ? "success" : "secondary")" for="switch-@exam.Id">
+                                                @(exam.IsPublished ? "Đang mở thi" : "Đã đóng ca")
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>@exam.CreationTime.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</td>
+                                    <td class="text-end pe-4">
+                                        <a href="@Url.Action("Preview", "Exams", new { id = exam.Id })" class="btn btn-sm btn-outline-primary me-1" title="Xem trước & Sửa">
+                                            <i class="fas fa-eye"></i> Xem & Sửa
+                                        </a>
+                                        <a href="@Url.Action("Analytics", "Exams", new { id = exam.Id })" class="btn btn-sm btn-outline-success me-1" title="Thống kê">
+                                            <i class="fas fa-chart-bar"></i> Thống kê
+                                        </a>
+                                        <button class="btn btn-sm btn-outline-danger btn-delete" data-id="@exam.Id" title="Xóa">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Upload File Word -->
+<div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="uploadModalLabel"><i class="fas fa-file-word me-2 text-primary"></i>Tải lên Đề thi Word (.docx)</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info border-0 mb-3">
+                    <h6 class="fw-bold mb-1"><i class="fas fa-info-circle me-2"></i>Quy chuẩn kiểm tra 100% nghiêm ngặt:</h6>
+                    <small>
+                        File Word phải tuân thủ đúng bộ Tags quy định ([EXAM_TITLE], [PART: 5|6|7], [Q: 101-200], [A]..[D], [KEY], [HINT]).
+                        Nếu phát hiện bất kỳ lỗi nào, hệ thống sẽ <strong>hủy bỏ toàn bộ (Rollback 100%)</strong> và trả về bảng chi tiết lỗi để bạn chỉnh sửa file.
+                    </small>
+                </div>
+
+                <form id="uploadDocxForm" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="fileInput" class="form-label fw-semibold">Chọn file Word (.docx):</label>
+                        <input class="form-control" type="file" id="fileInput" name="file" accept=".docx" required>
+                    </div>
+                    <div class="progress d-none mb-3" id="uploadProgress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%">Đang tải lên và kiểm tra...</div>
+                    </div>
+                </form>
+
+                <!-- Error Display Section -->
+                <div id="uploadErrors" class="alert alert-danger d-none">
+                    <h6 class="fw-bold text-danger"><i class="fas fa-exclamation-triangle me-2"></i>Phát hiện lỗi định dạng (Đã hủy giao dịch Rollback 100%):</h6>
+                    <ul id="errorList" class="mb-0 ps-3 small"></ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="btnSubmitUpload">
+                    <i class="fas fa-upload me-1"></i> Bắt đầu Tải lên
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Upload form AJAX handler
+            $('#btnSubmitUpload').click(function () {
+                var fileInput = $('#fileInput')[0];
+                if (!fileInput.files.length) {
+                    alert('Vui lòng chọn file .docx');
+                    return;
+                }
+
+                var formData = new FormData($('#uploadDocxForm')[0]);
+                $('#uploadProgress').removeClass('d-none');
+                $('#uploadErrors').addClass('d-none');
+                $('#btnSubmitUpload').prop('disabled', true);
+
+                $.ajax({
+                    url: '@Url.Action("UploadDocx", "Exams")',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (res) {
+                        $('#uploadProgress').addClass('d-none');
+                        $('#btnSubmitUpload').prop('disabled', false);
+
+                        if (res.success) {
+                            $('#uploadModal').modal('hide');
+                            alert(res.message);
+                            location.reload();
+                        } else {
+                            $('#errorList').empty();
+                            $.each(res.errors, function (index, err) {
+                                $('#errorList').append('<li>' + err + '</li>');
+                            });
+                            $('#uploadErrors').removeClass('d-none');
+                        }
+                    },
+                    error: function (xhr) {
+                        $('#uploadProgress').addClass('d-none');
+                        $('#btnSubmitUpload').prop('disabled', false);
+                        $('#errorList').empty().append('<li>Lỗi hệ thống khi tải file: ' + xhr.responseText + '</li>');
+                        $('#uploadErrors').removeClass('d-none');
+                    }
+                });
+            });
+
+            // Toggle Publish switch
+            $('.publish-switch').change(function () {
+                var switchElem = $(this);
+                var examId = switchElem.data('id');
+                var labelElem = switchElem.siblings('.status-label');
+
+                $.post('@Url.Action("TogglePublish", "Exams")', { id: examId }, function (res) {
+                    if (res.success) {
+                        if (res.isPublished) {
+                            labelElem.text('Đang mở thi').removeClass('text-secondary').addClass('text-success');
+                        } else {
+                            labelElem.text('Đã đóng ca').removeClass('text-success').addClass('text-secondary');
+                        }
+                    } else {
+                        alert(res.message || 'Lỗi khi cập nhật trạng thái');
+                        switchElem.prop('checked', !switchElem.prop('checked'));
+                    }
+                });
+            });
+
+            // Delete Exam
+            $('.btn-delete').click(function () {
+                var id = $(this).data('id');
+                if (confirm('Bạn có chắc chắn muốn xóa đề thi này không? Toàn bộ câu hỏi và lượt làm bài liên quan sẽ bị xóa!')) {
+                    $.post('@Url.Action("Delete", "Exams")', { id: id }, function (res) {
+                        if (res.success) {
+                            $('#row-exam-' + id).fadeOut(300, function () { $(this).remove(); });
+                        } else {
+                            alert(res.message || 'Không thể xóa đề thi');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}

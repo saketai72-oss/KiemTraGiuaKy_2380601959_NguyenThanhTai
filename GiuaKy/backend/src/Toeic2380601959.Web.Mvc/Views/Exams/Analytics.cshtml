@@ -1,0 +1,181 @@
+@model Toeic2380601959.Toeic.Exam
+@{
+    ViewData["Title"] = "Thống kê & Phân tích - " + Model.Title;
+    var top10 = ViewBag.Top10Wrong as IEnumerable<dynamic>;
+}
+
+<div class="container-fluid py-4">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-1">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Exams")">Quản lý Đề thi</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Thống kê & Phân tích</li>
+                </ol>
+            </nav>
+            <h3 class="fw-bold text-dark mb-0">Thống kê kết quả: @Model.Title</h3>
+        </div>
+        <div>
+            <a href="@Url.Action("Index", "Exams")" class="btn btn-outline-secondary me-2">
+                <i class="fas fa-arrow-left me-1"></i>Quay lại
+            </a>
+            <a href="@Url.Action("Preview", "Exams", new { id = Model.Id })" class="btn btn-outline-primary">
+                <i class="fas fa-eye me-1"></i>Xem trước Đề thi
+            </a>
+        </div>
+    </div>
+
+    <!-- 3 Thẻ thống kê tổng quan -->
+    <div class="row mb-4">
+        <div class="col-md-4 mb-3">
+            <div class="card border-0 shadow-sm rounded-3 bg-primary text-white p-3">
+                <div class="d-flex align-items-center">
+                    <div class="p-3 bg-white text-primary rounded-circle mr-3" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-users fa-2x"></i>
+                    </div>
+                    <div>
+                        <h6 class="text-white-50 mb-1">Tổng số lượt làm bài</h6>
+                        <h2 class="font-weight-bold mb-0">@ViewBag.TotalAttempts</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card border-0 shadow-sm rounded-3 bg-success text-white p-3">
+                <div class="d-flex align-items-center">
+                    <div class="p-3 bg-white text-success rounded-circle mr-3" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-trophy fa-2x"></i>
+                    </div>
+                    <div>
+                        <h6 class="text-white-50 mb-1">Điểm trung bình (Thang 495)</h6>
+                        <h2 class="font-weight-bold mb-0">@ViewBag.AvgScore <small class="text-white-50">/ 495</small></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card border-0 shadow-sm rounded-3 bg-info text-white p-3">
+                <div class="d-flex align-items-center">
+                    <div class="p-3 bg-white text-info rounded-circle mr-3" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-check-circle fa-2x"></i>
+                    </div>
+                    <div>
+                        <h6 class="text-white-50 mb-1">Số câu đúng trung bình</h6>
+                        <h2 class="font-weight-bold mb-0">@ViewBag.AvgCorrect <small class="text-white-50">/ @Model.TotalQuestions câu</small></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bảng TOP 10 CÂU HỎI NHIỀU SINH VIÊN LÀM SAI NHẤT -->
+    <div class="card border-0 shadow-sm rounded-3 mb-4">
+        <div class="card-header bg-white py-3 border-0 d-flex justify-content-between align-items-center">
+            <h5 class="card-title font-weight-bold text-danger mb-0">
+                <i class="fas fa-exclamation-triangle mr-2"></i>Top 10 Câu hỏi sinh viên làm sai nhiều nhất
+            </h5>
+            <small class="text-muted">Được tính dựa trên dữ liệu thi thực tế của sinh viên</small>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-4" style="width: 80px;">Thứ hạng</th>
+                            <th style="width: 100px;">Câu số</th>
+                            <th>Nội dung Câu hỏi</th>
+                            <th style="width: 140px;">Số lượt làm sai</th>
+                            <th style="width: 250px;" class="pe-4">Tỉ lệ làm sai</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (top10 == null || !top10.Any())
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center py-4 text-muted">
+                                    Chưa có dữ liệu làm bài nào được ghi nhận cho đề thi này.
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            int rank = 1;
+                            foreach (var item in top10)
+                            {
+                                <tr>
+                                    <td class="ps-4">
+                                        <span class="badge @(rank <= 3 ? "badge-danger" : "badge-secondary") rounded-pill px-2 py-1">
+                                            #@rank
+                                        </span>
+                                    </td>
+                                    <td><strong class="text-primary">Câu @item.QuestionNumber</strong></td>
+                                    <td><div class="text-truncate" style="max-width: 450px;">@item.QuestionText</div></td>
+                                    <td><span class="badge badge-danger">@item.WrongCount lượt</span></td>
+                                    <td class="pe-4">
+                                        <div class="d-flex align-items-center">
+                                            <div class="progress flex-grow-1 mr-2" style="height: 10px; flex-grow: 1;">
+                                                <div class="progress-bar bg-danger" role="progressbar" style="width: @item.FailureRate%"></div>
+                                            </div>
+                                            <span class="font-weight-bold small text-dark">@item.FailureRate%</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                rank++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Danh sách lượt làm bài gần đây -->
+    <div class="card border-0 shadow-sm rounded-3">
+        <div class="card-header bg-white py-3 border-0">
+            <h5 class="card-title font-weight-bold text-dark mb-0"><i class="fas fa-history mr-2"></i>Lịch sử các lượt làm bài</h5>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-4">Thời gian nộp</th>
+                            <th>Mã thiết bị</th>
+                            <th>Thời gian làm</th>
+                            <th>Số câu làm</th>
+                            <th>Đúng</th>
+                            <th>Sai</th>
+                            <th>Bỏ qua</th>
+                            <th class="pe-4 text-right">Điểm số</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (!Model.ExamAttempts.Any())
+                        {
+                            <tr>
+                                <td colspan="8" class="text-center py-4 text-muted">Chưa có lượt nộp bài nào.</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @foreach (var att in Model.ExamAttempts.OrderByDescending(a => a.SubmitTime).Take(20))
+                            {
+                                <tr>
+                                    <td class="ps-4">@att.SubmitTime.ToLocalTime().ToString("dd/MM/yyyy HH:mm:ss")</td>
+                                    <td><code>@(att.DeviceId ?? "anonymous")</code></td>
+                                    <td>@(att.TimeSpentSeconds / 60)m @(att.TimeSpentSeconds % 60)s</td>
+                                    <td>@att.AnsweredCount / @Model.TotalQuestions</td>
+                                    <td><span class="text-success font-weight-bold">@att.CorrectCount</span></td>
+                                    <td><span class="text-danger font-weight-bold">@att.WrongCount</span></td>
+                                    <td><span class="text-muted">@att.SkippedCount</span></td>
+                                    <td class="pe-4 text-right"><span class="badge badge-primary">@att.Score đ</span></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

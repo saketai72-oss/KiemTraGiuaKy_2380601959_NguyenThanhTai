@@ -1,0 +1,429 @@
+DEBUG 2026-10-17 15:16:47,225 [2    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2026-10-17 15:16:47,428 [2    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2026-10-17 15:16:47,449 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.Web.Startup.Toeic2380601959WebMvcModule, Toeic2380601959.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:16:47,452 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.Toeic2380601959WebCoreModule, Toeic2380601959.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:16:47,453 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.Toeic2380601959ApplicationModule, Toeic2380601959.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:16:47,453 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.Toeic2380601959CoreModule, Toeic2380601959.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:16:47,454 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:16:47,454 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:16:47,455 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:16:47,455 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.EntityFrameworkCore.Toeic2380601959EntityFrameworkModule, Toeic2380601959.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:16:47,456 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:16:47,457 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:16:47,457 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:16:47,458 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:16:47,458 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:16:47,459 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:16:47,460 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:16:47,462 [2    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2026-10-17 15:16:47,542 [2    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2026-10-17 15:16:47,542 [2    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2026-10-17 15:16:47,542 [2    ] o.Configuration.LanguageManagementConfig - Converted Toeic2380601959 (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2026-10-17 15:16:47,542 [2    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2026-10-17 15:16:47,996 [2    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Toeic2380601959.EntityFrameworkCore.Toeic2380601959DbContext, Toeic2380601959.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:16:48,341 [2    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2026-10-17 15:16:48,411 [2    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2026-10-17 15:16:48,426 [2    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2026-10-17 15:16:48,433 [2    ] Abp.Localization.LocalizationManager     - Initialized localization source: Toeic2380601959
+DEBUG 2026-10-17 15:16:48,437 [2    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2026-10-17 15:16:48,449 [2    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2026-10-17 15:16:48,452 [2    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[Toeic2380601959.MultiTenancy.Tenant, Toeic2380601959.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Toeic2380601959.Authorization.Users.User, Toeic2380601959.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+DEBUG 2026-10-17 15:16:51,203 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 9 classes define auto mapping attributes
+DEBUG 2026-10-17 15:16:51,203 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Users.Dto.CreateUserDto
+DEBUG 2026-10-17 15:16:51,207 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Users.Dto.UserDto
+DEBUG 2026-10-17 15:16:51,207 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2026-10-17 15:16:51,207 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Sessions.Dto.UserLoginInfoDto
+DEBUG 2026-10-17 15:16:51,207 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Roles.Dto.PermissionDto
+DEBUG 2026-10-17 15:16:51,208 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2026-10-17 15:16:51,208 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.MultiTenancy.Dto.TenantDto
+DEBUG 2026-10-17 15:16:51,208 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2026-10-17 15:16:51,208 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Web.Models.Roles.EditRoleModalViewModel
+INFO  2026-10-17 15:16:51,670 [2    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,fa,ja,zh-Hans
+INFO  2026-10-17 15:16:52,077 [2    ] Microsoft.Hosting.Lifetime               - Now listening on: http://0.0.0.0:5000
+INFO  2026-10-17 15:16:52,079 [2    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
+INFO  2026-10-17 15:16:52,080 [2    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
+INFO  2026-10-17 15:16:52,080 [2    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Codes\CMP\17-10\flutter_application_1\GiuaKy\backend\src\Toeic2380601959.Web.Mvc
+INFO  2026-10-17 15:17:00,997 [9    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:5000/api/student/exams - - -
+INFO  2026-10-17 15:17:01,096 [9    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Toeic2380601959.Web.Controllers.StudentExamController.GetPublishedExams (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:17:01,160 [9    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetPublishedExams", controller = "StudentExam", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPublishedExams() on controller Toeic2380601959.Web.Controllers.StudentExamController (Toeic2380601959.Web.Mvc).
+ERROR 2026-10-17 15:17:01,167 [9    ] Mvc.ExceptionHandling.AbpExceptionFilter - No component for supporting the service Toeic2380601959.Web.Controllers.StudentExamController was found
+Castle.MicroKernel.ComponentNotFoundException: No component for supporting the service Toeic2380601959.Web.Controllers.StudentExamController was found
+   at Castle.MicroKernel.DefaultKernel.Castle.MicroKernel.IKernelInternal.Resolve(Type service, Arguments arguments, IReleasePolicy policy, Boolean ignoreParentContext)
+   at Castle.MicroKernel.DefaultKernel.Resolve(Type service, Arguments arguments)
+   at Castle.Windsor.WindsorContainer.Resolve(Type service)
+   at Castle.Windsor.MsDependencyInjection.ScopedWindsorServiceProvider.ResolveInstanceOrNull(Type serviceType, Boolean isOptional)
+   at Castle.Windsor.MsDependencyInjection.ScopedWindsorServiceProvider.GetServiceInternal(Type serviceType, Boolean isOptional)
+   at Castle.Windsor.MsDependencyInjection.ScopedWindsorServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+INFO  2026-10-17 15:17:01,192 [9    ] c.Infrastructure.ControllerActionInvoker - Executed action Toeic2380601959.Web.Controllers.StudentExamController.GetPublishedExams (Toeic2380601959.Web.Mvc) in 16.8739ms
+INFO  2026-10-17 15:17:01,193 [9    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Toeic2380601959.Web.Controllers.StudentExamController.GetPublishedExams (Toeic2380601959.Web.Mvc)'
+ERROR 2026-10-17 15:17:01,207 [9    ] nostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+Castle.MicroKernel.ComponentNotFoundException: No component for supporting the service Toeic2380601959.Web.Controllers.StudentExamController was found
+   at Castle.MicroKernel.DefaultKernel.Castle.MicroKernel.IKernelInternal.Resolve(Type service, Arguments arguments, IReleasePolicy policy, Boolean ignoreParentContext)
+   at Castle.MicroKernel.DefaultKernel.Resolve(Type service, Arguments arguments)
+   at Castle.Windsor.WindsorContainer.Resolve(Type service)
+   at Castle.Windsor.MsDependencyInjection.ScopedWindsorServiceProvider.ResolveInstanceOrNull(Type serviceType, Boolean isOptional)
+   at Castle.Windsor.MsDependencyInjection.ScopedWindsorServiceProvider.GetServiceInternal(Type serviceType, Boolean isOptional)
+   at Castle.Windsor.MsDependencyInjection.ScopedWindsorServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Toeic2380601959.Authentication.JwtBearer.JwtTokenMiddleware.<>c__DisplayClass0_0.<<UseJwtTokenMiddleware>b__0>d.MoveNext() in C:\Codes\CMP\17-10\flutter_application_1\GiuaKy\backend\src\Toeic2380601959.Web.Core\Authentication\JwtBearer\JwtTokenMiddleware.cs:line 22
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+INFO  2026-10-17 15:17:01,217 [9    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 GET http://localhost:5000/api/student/exams - 500 - text/plain;+charset=utf-8 220.1176ms
+INFO  2026-10-17 15:17:26,224 [8    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:5000/Exams - - -
+INFO  2026-10-17 15:17:26,230 [8    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Toeic2380601959.Web.Controllers.ExamsController.Index (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:17:26,251 [8    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Exams", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller Toeic2380601959.Web.Controllers.ExamsController (Toeic2380601959.Web.Mvc).
+ERROR 2026-10-17 15:17:26,256 [8    ] Mvc.ExceptionHandling.AbpExceptionFilter - Can't create component 'Toeic2380601959.EntityFrameworkCore.Toeic2380601959DbContext' as it has dependencies to be satisfied.
+
+'Toeic2380601959.EntityFrameworkCore.Toeic2380601959DbContext' is waiting for the following dependencies:
+- Service 'Microsoft.EntityFrameworkCore.DbContextOptions`1[[Toeic2380601959.EntityFrameworkCore.Toeic2380601959DbContext, Toeic2380601959.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]' which was not registered.
+
+Castle.MicroKernel.Handlers.HandlerException: Can't create component 'Toeic2380601959.EntityFrameworkCore.Toeic2380601959DbContext' as it has dependencies to be satisfied.
+
+'Toeic2380601959.EntityFrameworkCore.Toeic2380601959DbContext' is waiting for the following dependencies:
+- Service 'Microsoft.EntityFrameworkCore.DbContextOptions`1[[Toeic2380601959.EntityFrameworkCore.Toeic2380601959DbContext, Toeic2380601959.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]' which was not registered.
+
+   at Castle.MicroKernel.Handlers.DefaultHandler.AssertNotWaitingForDependency()
+   at Castle.MicroKernel.Handlers.DefaultHandler.ResolveCore(CreationContext context, Boolean requiresDecommission, Boolean instanceRequired, Burden& burden)
+   at Castle.MicroKernel.Resolvers.DefaultDependencyResolver.ResolveFromKernelByType(CreationContext context, ComponentModel model, DependencyModel dependency)
+   at Castle.MicroKernel.Resolvers.DefaultDependencyResolver.Resolve(CreationContext context, ISubDependencyResolver contextHandlerResolver, ComponentModel model, DependencyModel dependency)
+   at Castle.MicroKernel.ComponentActivator.DefaultComponentActivator.CreateConstructorArguments(ConstructorCandidate constructor, CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.DefaultComponentActivator.Instantiate(CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.DefaultComponentActivator.InternalCreate(CreationContext context)
+   at Castle.MicroKernel.Handlers.DefaultHandler.ResolveCore(CreationContext context, Boolean requiresDecommission, Boolean instanceRequired, Burden& burden)
+   at Castle.MicroKernel.DefaultKernel.ResolveComponent(IHandler handler, Type service, Arguments additionalArguments, IReleasePolicy policy, Boolean ignoreParentContext)
+   at Castle.Windsor.MsDependencyInjection.ScopedWindsorServiceProvider.GetServiceInternal(Type serviceType, Boolean isOptional)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+INFO  2026-10-17 15:17:26,257 [8    ] c.Infrastructure.ControllerActionInvoker - Executed action Toeic2380601959.Web.Controllers.ExamsController.Index (Toeic2380601959.Web.Mvc) in 5.7581ms
+INFO  2026-10-17 15:17:26,257 [8    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Toeic2380601959.Web.Controllers.ExamsController.Index (Toeic2380601959.Web.Mvc)'
+ERROR 2026-10-17 15:17:26,260 [8    ] nostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+Castle.MicroKernel.Handlers.HandlerException: Can't create component 'Toeic2380601959.EntityFrameworkCore.Toeic2380601959DbContext' as it has dependencies to be satisfied.
+
+'Toeic2380601959.EntityFrameworkCore.Toeic2380601959DbContext' is waiting for the following dependencies:
+- Service 'Microsoft.EntityFrameworkCore.DbContextOptions`1[[Toeic2380601959.EntityFrameworkCore.Toeic2380601959DbContext, Toeic2380601959.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]' which was not registered.
+
+   at Castle.MicroKernel.Handlers.DefaultHandler.AssertNotWaitingForDependency()
+   at Castle.MicroKernel.Handlers.DefaultHandler.ResolveCore(CreationContext context, Boolean requiresDecommission, Boolean instanceRequired, Burden& burden)
+   at Castle.MicroKernel.Resolvers.DefaultDependencyResolver.ResolveFromKernelByType(CreationContext context, ComponentModel model, DependencyModel dependency)
+   at Castle.MicroKernel.Resolvers.DefaultDependencyResolver.Resolve(CreationContext context, ISubDependencyResolver contextHandlerResolver, ComponentModel model, DependencyModel dependency)
+   at Castle.MicroKernel.ComponentActivator.DefaultComponentActivator.CreateConstructorArguments(ConstructorCandidate constructor, CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.DefaultComponentActivator.Instantiate(CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.DefaultComponentActivator.InternalCreate(CreationContext context)
+   at Castle.MicroKernel.Handlers.DefaultHandler.ResolveCore(CreationContext context, Boolean requiresDecommission, Boolean instanceRequired, Burden& burden)
+   at Castle.MicroKernel.DefaultKernel.ResolveComponent(IHandler handler, Type service, Arguments additionalArguments, IReleasePolicy policy, Boolean ignoreParentContext)
+   at Castle.Windsor.MsDependencyInjection.ScopedWindsorServiceProvider.GetServiceInternal(Type serviceType, Boolean isOptional)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Toeic2380601959.Authentication.JwtBearer.JwtTokenMiddleware.<>c__DisplayClass0_0.<<UseJwtTokenMiddleware>b__0>d.MoveNext() in C:\Codes\CMP\17-10\flutter_application_1\GiuaKy\backend\src\Toeic2380601959.Web.Core\Authentication\JwtBearer\JwtTokenMiddleware.cs:line 22
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+INFO  2026-10-17 15:17:26,262 [8    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 GET http://localhost:5000/Exams - 500 - text/plain;+charset=utf-8 37.8215ms
+DEBUG 2026-10-17 15:20:55,016 [2    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2026-10-17 15:20:55,151 [2    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2026-10-17 15:20:55,173 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.Web.Startup.Toeic2380601959WebMvcModule, Toeic2380601959.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:20:55,175 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.Toeic2380601959WebCoreModule, Toeic2380601959.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:20:55,176 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.Toeic2380601959ApplicationModule, Toeic2380601959.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:20:55,176 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.Toeic2380601959CoreModule, Toeic2380601959.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:20:55,177 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:20:55,177 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:20:55,177 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:20:55,178 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.EntityFrameworkCore.Toeic2380601959EntityFrameworkModule, Toeic2380601959.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:20:55,178 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:20:55,179 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:20:55,180 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:20:55,180 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:20:55,181 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:20:55,181 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:20:55,182 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:20:55,185 [2    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2026-10-17 15:20:55,273 [2    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2026-10-17 15:20:55,274 [2    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2026-10-17 15:20:55,274 [2    ] o.Configuration.LanguageManagementConfig - Converted Toeic2380601959 (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2026-10-17 15:20:55,274 [2    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2026-10-17 15:20:55,717 [2    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Toeic2380601959.EntityFrameworkCore.Toeic2380601959DbContext, Toeic2380601959.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:20:56,183 [2    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2026-10-17 15:20:56,285 [2    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2026-10-17 15:20:56,301 [2    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2026-10-17 15:20:56,308 [2    ] Abp.Localization.LocalizationManager     - Initialized localization source: Toeic2380601959
+DEBUG 2026-10-17 15:20:56,312 [2    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2026-10-17 15:20:56,323 [2    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2026-10-17 15:20:56,328 [2    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[Toeic2380601959.MultiTenancy.Tenant, Toeic2380601959.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Toeic2380601959.Authorization.Users.User, Toeic2380601959.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+DEBUG 2026-10-17 15:20:59,157 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 9 classes define auto mapping attributes
+DEBUG 2026-10-17 15:20:59,157 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Users.Dto.CreateUserDto
+DEBUG 2026-10-17 15:20:59,161 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Users.Dto.UserDto
+DEBUG 2026-10-17 15:20:59,161 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2026-10-17 15:20:59,161 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Sessions.Dto.UserLoginInfoDto
+DEBUG 2026-10-17 15:20:59,161 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Roles.Dto.PermissionDto
+DEBUG 2026-10-17 15:20:59,161 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2026-10-17 15:20:59,162 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.MultiTenancy.Dto.TenantDto
+DEBUG 2026-10-17 15:20:59,162 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2026-10-17 15:20:59,162 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Web.Models.Roles.EditRoleModalViewModel
+INFO  2026-10-17 15:20:59,595 [2    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,fa,ja,zh-Hans
+INFO  2026-10-17 15:20:59,871 [2    ] Microsoft.Hosting.Lifetime               - Now listening on: http://0.0.0.0:5000
+INFO  2026-10-17 15:20:59,874 [2    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
+INFO  2026-10-17 15:20:59,875 [2    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
+INFO  2026-10-17 15:20:59,875 [2    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Codes\CMP\17-10\flutter_application_1\GiuaKy\backend\src\Toeic2380601959.Web.Mvc
+INFO  2026-10-17 15:21:22,350 [9    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:5000/api/student/exams - - -
+INFO  2026-10-17 15:21:22,442 [9    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Toeic2380601959.Web.Controllers.StudentExamController.GetPublishedExams (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:21:22,505 [9    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetPublishedExams", controller = "StudentExam", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPublishedExams() on controller Toeic2380601959.Web.Controllers.StudentExamController (Toeic2380601959.Web.Mvc).
+WARN  2026-10-17 15:21:23,251 [12   ] EntityFrameworkCore.Database.Transaction - Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+INFO  2026-10-17 15:21:23,331 [9    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing OkObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2026-10-17 15:21:23,397 [9    ] c.Infrastructure.ControllerActionInvoker - Executed action Toeic2380601959.Web.Controllers.StudentExamController.GetPublishedExams (Toeic2380601959.Web.Mvc) in 873.0056ms
+INFO  2026-10-17 15:21:23,397 [9    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Toeic2380601959.Web.Controllers.StudentExamController.GetPublishedExams (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:21:23,405 [9    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 GET http://localhost:5000/api/student/exams - 200 - application/json;+charset=utf-8 1054.0015ms
+DEBUG 2026-10-17 15:23:15,329 [2    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2026-10-17 15:23:15,345 [2    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2026-10-17 15:23:15,380 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.Web.Startup.Toeic2380601959WebMvcModule, Toeic2380601959.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:23:15,382 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.Toeic2380601959WebCoreModule, Toeic2380601959.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:23:15,382 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.Toeic2380601959ApplicationModule, Toeic2380601959.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:23:15,383 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.Toeic2380601959CoreModule, Toeic2380601959.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:23:15,383 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:23:15,383 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:23:15,384 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:23:15,384 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.EntityFrameworkCore.Toeic2380601959EntityFrameworkModule, Toeic2380601959.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:23:15,384 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:23:15,386 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:23:15,386 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:23:15,386 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:23:15,387 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:23:15,387 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:23:15,388 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:23:15,390 [2    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2026-10-17 15:23:15,452 [2    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2026-10-17 15:23:15,452 [2    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2026-10-17 15:23:15,452 [2    ] o.Configuration.LanguageManagementConfig - Converted Toeic2380601959 (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2026-10-17 15:23:15,452 [2    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2026-10-17 15:23:15,889 [2    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Toeic2380601959.EntityFrameworkCore.Toeic2380601959DbContext, Toeic2380601959.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:23:16,411 [2    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2026-10-17 15:23:16,487 [2    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2026-10-17 15:23:16,502 [2    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2026-10-17 15:23:16,516 [2    ] Abp.Localization.LocalizationManager     - Initialized localization source: Toeic2380601959
+DEBUG 2026-10-17 15:23:16,521 [2    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2026-10-17 15:23:16,534 [2    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2026-10-17 15:23:16,538 [2    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[Toeic2380601959.MultiTenancy.Tenant, Toeic2380601959.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Toeic2380601959.Authorization.Users.User, Toeic2380601959.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+DEBUG 2026-10-17 15:23:19,258 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 9 classes define auto mapping attributes
+DEBUG 2026-10-17 15:23:19,259 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Users.Dto.CreateUserDto
+DEBUG 2026-10-17 15:23:19,262 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Users.Dto.UserDto
+DEBUG 2026-10-17 15:23:19,263 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2026-10-17 15:23:19,263 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Sessions.Dto.UserLoginInfoDto
+DEBUG 2026-10-17 15:23:19,263 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Roles.Dto.PermissionDto
+DEBUG 2026-10-17 15:23:19,263 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2026-10-17 15:23:19,263 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.MultiTenancy.Dto.TenantDto
+DEBUG 2026-10-17 15:23:19,263 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2026-10-17 15:23:19,263 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Web.Models.Roles.EditRoleModalViewModel
+INFO  2026-10-17 15:23:19,661 [2    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,fa,ja,zh-Hans
+INFO  2026-10-17 15:23:19,911 [2    ] Microsoft.Hosting.Lifetime               - Now listening on: http://0.0.0.0:5000
+INFO  2026-10-17 15:23:19,914 [2    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
+INFO  2026-10-17 15:23:19,914 [2    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
+INFO  2026-10-17 15:23:19,914 [2    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Codes\CMP\17-10\flutter_application_1\GiuaKy\backend\src\Toeic2380601959.Web.Mvc
+INFO  2026-10-17 15:23:30,894 [7    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:5000/api/student/exams - - -
+INFO  2026-10-17 15:23:30,986 [7    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Toeic2380601959.Web.Controllers.StudentExamController.GetPublishedExams (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:23:31,043 [7    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetPublishedExams", controller = "StudentExam", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPublishedExams() on controller Toeic2380601959.Web.Controllers.StudentExamController (Toeic2380601959.Web.Mvc).
+WARN  2026-10-17 15:23:31,740 [9    ] EntityFrameworkCore.Database.Transaction - Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+INFO  2026-10-17 15:23:31,802 [11   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing OkObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2026-10-17 15:23:31,861 [11   ] c.Infrastructure.ControllerActionInvoker - Executed action Toeic2380601959.Web.Controllers.StudentExamController.GetPublishedExams (Toeic2380601959.Web.Mvc) in 800.8656ms
+INFO  2026-10-17 15:23:31,861 [11   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Toeic2380601959.Web.Controllers.StudentExamController.GetPublishedExams (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:23:31,870 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 GET http://localhost:5000/api/student/exams - 200 - application/json;+charset=utf-8 974.0260ms
+INFO  2026-10-17 15:23:58,940 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:5000/api/student/exams/1 - - -
+INFO  2026-10-17 15:23:58,946 [11   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Toeic2380601959.Web.Controllers.StudentExamController.GetExamForTake (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:23:58,968 [11   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetExamForTake", controller = "StudentExam", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetExamForTake(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32]) on controller Toeic2380601959.Web.Controllers.StudentExamController (Toeic2380601959.Web.Mvc).
+WARN  2026-10-17 15:23:59,146 [11   ] Microsoft.EntityFrameworkCore.Query      - Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+WARN  2026-10-17 15:23:59,428 [15   ] EntityFrameworkCore.Database.Transaction - Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+INFO  2026-10-17 15:23:59,447 [15   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing OkObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2026-10-17 15:23:59,469 [9    ] c.Infrastructure.ControllerActionInvoker - Executed action Toeic2380601959.Web.Controllers.StudentExamController.GetExamForTake (Toeic2380601959.Web.Mvc) in 500.2946ms
+INFO  2026-10-17 15:23:59,469 [9    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Toeic2380601959.Web.Controllers.StudentExamController.GetExamForTake (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:23:59,470 [9    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 GET http://localhost:5000/api/student/exams/1 - 200 - application/json;+charset=utf-8 529.4957ms
+INFO  2026-10-17 15:24:30,764 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 POST http://localhost:5000/api/student/exams/submit - application/json 2
+INFO  2026-10-17 15:24:30,766 [15   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Toeic2380601959.Web.Controllers.StudentExamController.SubmitExam (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:24:30,772 [15   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "SubmitExam", controller = "StudentExam", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SubmitExam(Toeic2380601959.Web.Controllers.SubmitExamInputDto) on controller Toeic2380601959.Web.Controllers.StudentExamController (Toeic2380601959.Web.Mvc).
+INFO  2026-10-17 15:24:30,804 [15   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing BadRequestObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2026-10-17 15:24:30,819 [15   ] c.Infrastructure.ControllerActionInvoker - Executed action Toeic2380601959.Web.Controllers.StudentExamController.SubmitExam (Toeic2380601959.Web.Mvc) in 46.0918ms
+INFO  2026-10-17 15:24:30,819 [15   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Toeic2380601959.Web.Controllers.StudentExamController.SubmitExam (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:24:30,819 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 POST http://localhost:5000/api/student/exams/submit - 400 - application/problem+json;+charset=utf-8 54.9535ms
+INFO  2026-10-17 15:25:27,208 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 POST http://localhost:5000/api/student/exams/submit - application/json 117
+INFO  2026-10-17 15:25:27,208 [17   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Toeic2380601959.Web.Controllers.StudentExamController.SubmitExam (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:25:27,211 [17   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "SubmitExam", controller = "StudentExam", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SubmitExam(Toeic2380601959.Web.Controllers.SubmitExamInputDto) on controller Toeic2380601959.Web.Controllers.StudentExamController (Toeic2380601959.Web.Mvc).
+WARN  2026-10-17 15:25:27,330 [17   ] Microsoft.EntityFrameworkCore.Query      - Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+WARN  2026-10-17 15:25:27,672 [9    ] EntityFrameworkCore.Database.Transaction - Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+INFO  2026-10-17 15:25:27,687 [9    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing OkObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2026-10-17 15:25:27,695 [9    ] c.Infrastructure.ControllerActionInvoker - Executed action Toeic2380601959.Web.Controllers.StudentExamController.SubmitExam (Toeic2380601959.Web.Mvc) in 484.4491ms
+INFO  2026-10-17 15:25:27,695 [9    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Toeic2380601959.Web.Controllers.StudentExamController.SubmitExam (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:25:27,696 [9    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 POST http://localhost:5000/api/student/exams/submit - 200 - application/json;+charset=utf-8 488.1464ms
+INFO  2026-10-17 15:25:35,828 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:5000/Exams - - -
+INFO  2026-10-17 15:25:35,829 [17   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Toeic2380601959.Web.Controllers.ExamsController.Index (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:25:35,834 [17   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Exams", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller Toeic2380601959.Web.Controllers.ExamsController (Toeic2380601959.Web.Mvc).
+WARN  2026-10-17 15:25:35,875 [17   ] EntityFrameworkCore.Database.Transaction - Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+INFO  2026-10-17 15:25:35,919 [17   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2026-10-17 15:25:36,199 [17   ] c.Infrastructure.ControllerActionInvoker - Executed action Toeic2380601959.Web.Controllers.ExamsController.Index (Toeic2380601959.Web.Mvc) in 364.4346ms
+INFO  2026-10-17 15:25:36,199 [17   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Toeic2380601959.Web.Controllers.ExamsController.Index (Toeic2380601959.Web.Mvc)'
+ERROR 2026-10-17 15:25:36,247 [17   ] nostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Toeic2380601959.Web.Views.Shared.Components.SideBarUserArea.SideBarUserAreaViewModel.GetShownLoginName() in C:\Codes\CMP\17-10\flutter_application_1\GiuaKy\backend\src\Toeic2380601959.Web.Mvc\Views\Shared\Components\SideBarUserArea\SideBarUserAreaViewModel.cs:line 13
+   at AspNetCoreGeneratedDocument.Views_Shared_Components_SideBarUserArea_Default.ExecuteAsync()
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+   at Microsoft.AspNetCore.Mvc.ViewComponents.ViewViewComponentResult.ExecuteAsync(ViewComponentContext context)
+   at Microsoft.AspNetCore.Mvc.ViewComponents.DefaultViewComponentInvoker.InvokeAsync(ViewComponentContext context)
+   at Microsoft.AspNetCore.Mvc.ViewComponents.DefaultViewComponentHelper.InvokeCoreAsync(ViewComponentDescriptor descriptor, Object arguments)
+   at AspNetCoreGeneratedDocument.Views_Shared_Layout__SideBar.ExecuteAsync()
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper.RenderPartialCoreAsync(String partialViewName, Object model, ViewDataDictionary viewData, TextWriter writer)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper.PartialAsync(String partialViewName, Object model, ViewDataDictionary viewData)
+   at AspNetCoreGeneratedDocument.Views_Shared_Layout__Layout.<>c__DisplayClass9_0.<<ExecuteAsync>b__1>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext.SetOutputContentAsync()
+   at AspNetCoreGeneratedDocument.Views_Shared_Layout__Layout.ExecuteAsync() in C:\Codes\CMP\17-10\flutter_application_1\GiuaKy\backend\src\Toeic2380601959.Web.Mvc\Views\Shared\Layout\_Layout.cshtml:line 14
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderLayoutAsync(ViewContext context, ViewBufferTextWriter bodyWriter)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ActionContext actionContext, IView view, ViewDataDictionary viewData, ITempDataDictionary tempData, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Toeic2380601959.Authentication.JwtBearer.JwtTokenMiddleware.<>c__DisplayClass0_0.<<UseJwtTokenMiddleware>b__0>d.MoveNext() in C:\Codes\CMP\17-10\flutter_application_1\GiuaKy\backend\src\Toeic2380601959.Web.Core\Authentication\JwtBearer\JwtTokenMiddleware.cs:line 22
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+INFO  2026-10-17 15:25:36,255 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 GET http://localhost:5000/Exams - 500 - text/plain;+charset=utf-8 427.3443ms
+DEBUG 2026-10-17 15:27:28,036 [2    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2026-10-17 15:27:28,051 [2    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2026-10-17 15:27:28,072 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.Web.Startup.Toeic2380601959WebMvcModule, Toeic2380601959.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:27:28,074 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.Toeic2380601959WebCoreModule, Toeic2380601959.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:27:28,075 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.Toeic2380601959ApplicationModule, Toeic2380601959.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:27:28,075 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.Toeic2380601959CoreModule, Toeic2380601959.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:27:28,075 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:27:28,076 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:27:28,076 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:27:28,076 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Toeic2380601959.EntityFrameworkCore.Toeic2380601959EntityFrameworkModule, Toeic2380601959.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:27:28,077 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:27:28,078 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:27:28,078 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:27:28,078 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:27:28,079 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:27:28,079 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:27:28,079 [2    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=10.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:27:28,081 [2    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2026-10-17 15:27:28,146 [2    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2026-10-17 15:27:28,146 [2    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2026-10-17 15:27:28,147 [2    ] o.Configuration.LanguageManagementConfig - Converted Toeic2380601959 (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2026-10-17 15:27:28,147 [2    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2026-10-17 15:27:28,574 [2    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Toeic2380601959.EntityFrameworkCore.Toeic2380601959DbContext, Toeic2380601959.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2026-10-17 15:27:28,930 [2    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2026-10-17 15:27:28,974 [2    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2026-10-17 15:27:28,985 [2    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2026-10-17 15:27:28,992 [2    ] Abp.Localization.LocalizationManager     - Initialized localization source: Toeic2380601959
+DEBUG 2026-10-17 15:27:28,996 [2    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2026-10-17 15:27:29,016 [2    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2026-10-17 15:27:29,020 [2    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[Toeic2380601959.MultiTenancy.Tenant, Toeic2380601959.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Toeic2380601959.Authorization.Users.User, Toeic2380601959.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+DEBUG 2026-10-17 15:27:32,179 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 9 classes define auto mapping attributes
+DEBUG 2026-10-17 15:27:32,179 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Users.Dto.CreateUserDto
+DEBUG 2026-10-17 15:27:32,184 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Users.Dto.UserDto
+DEBUG 2026-10-17 15:27:32,184 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2026-10-17 15:27:32,185 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Sessions.Dto.UserLoginInfoDto
+DEBUG 2026-10-17 15:27:32,185 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Roles.Dto.PermissionDto
+DEBUG 2026-10-17 15:27:32,185 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2026-10-17 15:27:32,185 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.MultiTenancy.Dto.TenantDto
+DEBUG 2026-10-17 15:27:32,185 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2026-10-17 15:27:32,185 [2    ] Abp.AutoMapper.AbpAutoMapperModule       - Toeic2380601959.Web.Models.Roles.EditRoleModalViewModel
+INFO  2026-10-17 15:27:32,684 [2    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,fa,ja,zh-Hans
+INFO  2026-10-17 15:27:33,042 [2    ] Microsoft.Hosting.Lifetime               - Now listening on: http://0.0.0.0:5000
+INFO  2026-10-17 15:27:33,045 [2    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
+INFO  2026-10-17 15:27:33,046 [2    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
+INFO  2026-10-17 15:27:33,046 [2    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Codes\CMP\17-10\flutter_application_1\GiuaKy\backend\src\Toeic2380601959.Web.Mvc
+INFO  2026-10-17 15:27:53,089 [7    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:5000/Exams - - -
+INFO  2026-10-17 15:27:53,192 [7    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Toeic2380601959.Web.Controllers.ExamsController.Index (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:27:53,262 [7    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Exams", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller Toeic2380601959.Web.Controllers.ExamsController (Toeic2380601959.Web.Mvc).
+WARN  2026-10-17 15:27:54,347 [12   ] EntityFrameworkCore.Database.Transaction - Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+INFO  2026-10-17 15:27:54,446 [7    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2026-10-17 15:27:54,963 [7    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 501.0084ms.
+INFO  2026-10-17 15:27:54,964 [7    ] c.Infrastructure.ControllerActionInvoker - Executed action Toeic2380601959.Web.Controllers.ExamsController.Index (Toeic2380601959.Web.Mvc) in 1702.2051ms
+INFO  2026-10-17 15:27:54,965 [7    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Toeic2380601959.Web.Controllers.ExamsController.Index (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:27:54,973 [7    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 GET http://localhost:5000/Exams - 200 - text/html;+charset=utf-8 1883.5176ms
+INFO  2026-10-17 15:28:05,184 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:5000/Exams/Preview/1 - - -
+INFO  2026-10-17 15:28:05,192 [11   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Toeic2380601959.Web.Controllers.ExamsController.Preview (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:28:05,209 [11   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Preview", controller = "Exams", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Preview(Int32) on controller Toeic2380601959.Web.Controllers.ExamsController (Toeic2380601959.Web.Mvc).
+WARN  2026-10-17 15:28:05,319 [11   ] Microsoft.EntityFrameworkCore.Query      - Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+WARN  2026-10-17 15:28:05,613 [15   ] EntityFrameworkCore.Database.Transaction - Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+INFO  2026-10-17 15:28:05,633 [15   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Preview.
+INFO  2026-10-17 15:28:07,768 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:5000/Exams/Analytics/1 - - -
+INFO  2026-10-17 15:28:07,771 [15   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Toeic2380601959.Web.Controllers.ExamsController.Analytics (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:28:07,776 [15   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Analytics", controller = "Exams", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Analytics(Int32) on controller Toeic2380601959.Web.Controllers.ExamsController (Toeic2380601959.Web.Mvc).
+WARN  2026-10-17 15:28:08,053 [13   ] EntityFrameworkCore.Database.Transaction - Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+INFO  2026-10-17 15:28:08,069 [13   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Analytics.
+INFO  2026-10-17 15:28:08,105 [13   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Analytics executed in 36.9407ms.
+INFO  2026-10-17 15:28:08,105 [13   ] c.Infrastructure.ControllerActionInvoker - Executed action Toeic2380601959.Web.Controllers.ExamsController.Analytics (Toeic2380601959.Web.Mvc) in 328.9704ms
+INFO  2026-10-17 15:28:08,105 [13   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Toeic2380601959.Web.Controllers.ExamsController.Analytics (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:28:08,106 [13   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 GET http://localhost:5000/Exams/Analytics/1 - 200 - text/html;+charset=utf-8 337.9623ms
+INFO  2026-10-17 15:28:08,116 [11   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Preview executed in 2484.5979ms.
+INFO  2026-10-17 15:28:08,118 [11   ] c.Infrastructure.ControllerActionInvoker - Executed action Toeic2380601959.Web.Controllers.ExamsController.Preview (Toeic2380601959.Web.Mvc) in 2908.9911ms
+INFO  2026-10-17 15:28:08,118 [11   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Toeic2380601959.Web.Controllers.ExamsController.Preview (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:28:08,119 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 GET http://localhost:5000/Exams/Preview/1 - 200 - text/html;+charset=utf-8 2934.2061ms
+INFO  2026-10-17 15:29:46,407 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:5000/api/student/exams - - -
+INFO  2026-10-17 15:29:46,409 [15   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Toeic2380601959.Web.Controllers.StudentExamController.GetPublishedExams (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:29:46,415 [15   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetPublishedExams", controller = "StudentExam", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPublishedExams() on controller Toeic2380601959.Web.Controllers.StudentExamController (Toeic2380601959.Web.Mvc).
+WARN  2026-10-17 15:29:46,446 [15   ] EntityFrameworkCore.Database.Transaction - Savepoints are disabled because Multiple Active Result Sets (MARS) is enabled. If 'SaveChanges' fails, then the transaction cannot be automatically rolled back to a known clean state. Instead, the transaction should be rolled back by the application before retrying 'SaveChanges'. See https://go.microsoft.com/fwlink/?linkid=2149338 for more information and examples. To identify the code which triggers this warning, call 'ConfigureWarnings(w => w.Throw(SqlServerEventId.SavepointsDisabledBecauseOfMARS))'.
+INFO  2026-10-17 15:29:46,470 [15   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing OkObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2026-10-17 15:29:46,515 [15   ] c.Infrastructure.ControllerActionInvoker - Executed action Toeic2380601959.Web.Controllers.StudentExamController.GetPublishedExams (Toeic2380601959.Web.Mvc) in 100.0849ms
+INFO  2026-10-17 15:29:46,516 [15   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Toeic2380601959.Web.Controllers.StudentExamController.GetPublishedExams (Toeic2380601959.Web.Mvc)'
+INFO  2026-10-17 15:29:46,516 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 GET http://localhost:5000/api/student/exams - 200 - application/json;+charset=utf-8 109.0040ms

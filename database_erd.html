@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sơ Đồ Thực Thể CSDL (ERD) - Hệ Thống Thi TOEIC Reading</title>
+    <!-- Mermaid JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --border-color: #334155;
+            --accent-blue: #38bdf8;
+            --accent-indigo: #6366f1;
+            --pk-color: #f59e0b;
+            --fk-color: #38bdf8;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 30px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            font-size: 26px;
+            color: var(--accent-blue);
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn:hover {
+            background-color: #2a374d;
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        .btn.active {
+            background-color: #2563eb;
+            border-color: #2563eb;
+            color: #ffffff;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* ERD Mermaid Canvas */
+        .mermaid-container {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+        }
+
+        /* Card Schema Layout */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .table-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .table-card:hover {
+            transform: translateY(-2px);
+            border-color: #475569;
+        }
+
+        .table-header {
+            background: linear-gradient(135deg, #1e40af, #2563eb);
+            color: #ffffff;
+            padding: 12px 16px;
+            font-weight: bold;
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .table-header .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: normal;
+        }
+
+        .table-body {
+            padding: 12px 16px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 13px;
+        }
+
+        .table-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            border-bottom: 1px solid #243044;
+        }
+
+        .table-row:last-child {
+            border-bottom: none;
+        }
+
+        .col-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge-pk {
+            color: var(--pk-color);
+            font-weight: bold;
+            font-size: 11px;
+            background: rgba(245, 158, 11, 0.15);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .badge-fk {
+            color: var(--fk-color);
+            font-weight: bold;
+            font-size: 11px;
+            background: rgba(56, 189, 248, 0.15);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .col-type {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+
+        .note {
+            color: #64748b;
+            font-size: 11px;
+            font-family: 'Segoe UI', sans-serif;
+            margin-left: 4px;
+        }
+
+        /* SQL View */
+        pre.sql-code {
+            background: #090d16;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            color: #38bdf8;
+            font-family: 'Consolas', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: auto;
+            max-height: 600px;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SƠ ĐỒ THỰC THỂ CƠ SỞ DỮ LIỆU (ERD)</h1>
+            <p>Hệ thống thi TOEIC Reading | Kiến trúc Phân cấp Level 1 & Level 2 (MS SQL Server 2022)</p>
+        </header>
+
+        <div class="toolbar">
+            <button class="btn active" onclick="switchTab('diagram-view', this)">📊 Sơ Đồ ERD (Mermaid)</button>
+            <button class="btn" onclick="switchTab('cards-view', this)">📑 Chi Tiết 6 Bảng CSDL</button>
+            <button class="btn" onclick="switchTab('sql-view', this)">💾 Kịch Bản SQL DDL</button>
+            <button class="btn" onclick="window.print()">🖨️ In / Chụp Màn Hình</button>
+        </div>
+
+        <!-- TAB 1: MERMAID ERD DIAGRAM -->
+        <div id="diagram-view" class="tab-content active">
+            <div class="mermaid-container">
+                <pre class="mermaid">
+erDiagram
+    EXAMS ||--o{ QUESTION_GROUPS : "1 Exam có N Groups (1:N)"
+    EXAMS ||--o{ QUESTIONS : "1 Exam chứa N Questions (1:N)"
+    EXAMS ||--o{ EXAM_ATTEMPTS : "1 Exam có N Lượt thi (1:N)"
+    QUESTION_GROUPS ||--o{ QUESTIONS : "1 Group gồm N Questions (1:N)"
+    QUESTIONS ||--o{ QUESTION_OPTIONS : "1 Question có 4 Options A,B,C,D (1:N)"
+    QUESTIONS ||--o{ EXAM_ATTEMPT_ANSWERS : "1 Question có trong N câu trả lời"
+    EXAM_ATTEMPTS ||--o{ EXAM_ATTEMPT_ANSWERS : "1 Lượt thi gồm N Chi tiết đáp án (1:N)"
+    QUESTION_OPTIONS ||--o{ EXAM_ATTEMPT_ANSWERS : "Tùy chọn được chọn (0..1:N)"
+
+    EXAMS {
+        int Id PK "Khóa chính"
+        string Title "Tên đề thi"
+        int DurationMinutes "Thời gian (75p)"
+        int TotalQuestions "Tổng số câu hỏi"
+        boolean IsPublished "Trạng thái mở ca thi"
+        datetime CreationTime "Thời gian tạo"
+    }
+
+    QUESTION_GROUPS {
+        int Id PK "Khóa chính"
+        int ExamId FK "Mã đề thi"
+        int PartNumber "Part 5, 6, 7"
+        string DirectionText "Câu hướng dẫn đoạn văn"
+        string PassageContentHtml "Nội dung bài đọc HTML"
+        string PassageImagesJson "Danh sách ảnh kèm theo"
+        int OrderIndex "Thứ tự hiển thị"
+    }
+
+    QUESTIONS {
+        int Id PK "Khóa chính"
+        int ExamId FK "Mã đề thi"
+        int QuestionGroupId FK "Mã nhóm câu hỏi"
+        int QuestionNumber "Số thứ tự câu (101-200)"
+        string QuestionText "Nội dung câu hỏi"
+        string Hint "Gợi ý / Lời giải chi tiết"
+        boolean AllowShuffleQuestion "Hoán vị câu hỏi"
+        boolean AllowShuffleAnswers "Hoán vị 4 đáp án"
+    }
+
+    QUESTION_OPTIONS {
+        int Id PK "Khóa chính"
+        int QuestionId FK "Mã câu hỏi"
+        string OptionLabel "Nhãn A, B, C, D"
+        string OptionText "Nội dung lựa chọn"
+        boolean IsCorrect "Đáp án đúng (1/0)"
+    }
+
+    EXAM_ATTEMPTS {
+        int Id PK "Khóa chính"
+        int ExamId FK "Mã đề thi"
+        string DeviceId "Mã thiết bị Mobile"
+        datetime StartTime "Giờ bắt đầu làm bài"
+        datetime SubmitTime "Giờ nộp bài"
+        int TimeSpentSeconds "Thời gian hoàn thành"
+        int AnsweredCount "Số câu đã làm"
+        int CorrectCount "Số câu đúng"
+        int WrongCount "Số câu sai"
+        int SkippedCount "Số câu bỏ qua"
+        float Score "Điểm thi (Thang 495)"
+    }
+
+    EXAM_ATTEMPT_ANSWERS {
+        int Id PK "Khóa chính"
+        int ExamAttemptId FK "Mã lượt thi"
+        int QuestionId FK "Mã câu hỏi"
+        int SelectedOptionId FK "Mã đáp án đã chọn (Nullable)"
+        boolean IsCorrect "Kết quả đúng/sai"
+    }
+                </pre>
+            </div>
+        </div>
+
+        <!-- TAB 2: DETAILED CARDS VIEW -->
+        <div id="cards-view" class="tab-content">
+            <div class="cards-grid">
+                <!-- Exams -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <span>1. Exams (Đề thi)</span>
+                        <span class="tag">Bảng Gốc</span>
+                    </div>
+                    <div class="table-body">
+                        <div class="table-row">
+                            <div class="col-info"><span class="badge-pk">PK</span> <strong>Id</strong></div>
+                            <span class="col-type">int (Identity)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>Title</span></div>
+                            <span class="col-type">nvarchar(255)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>DurationMinutes</span></div>
+                            <span class="col-type">int (Default: 75)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>TotalQuestions</span></div>
+                            <span class="col-type">int (Dynamic: 30..100)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>IsPublished</span></div>
+                            <span class="col-type">bit (0: Đóng, 1: Mở)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>CreationTime</span></div>
+                            <span class="col-type">datetime2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QuestionGroups -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <span>2. QuestionGroups (Đoạn văn / Nhóm)</span>
+                        <span class="tag">Level 2</span>
+                    </div>
+                    <div class="table-body">
+                        <div class="table-row">
+                            <div class="col-info"><span class="badge-pk">PK</span> <strong>Id</strong></div>
+                            <span class="col-type">int (Identity)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span class="badge-fk">FK</span> <span>ExamId</span></div>
+                            <span class="col-type">int -> Exams.Id</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>PartNumber</span></div>
+                            <span class="col-type">int (5, 6, 7)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>DirectionText</span></div>
+                            <span class="col-type">nvarchar(max)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>PassageContentHtml</span></div>
+                            <span class="col-type">nvarchar(max)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>PassageImagesJson</span></div>
+                            <span class="col-type">nvarchar(max)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>OrderIndex</span></div>
+                            <span class="col-type">int</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Questions -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <span>3. Questions (Câu hỏi 101-200)</span>
+                        <span class="tag">Level 1 & 2</span>
+                    </div>
+                    <div class="table-body">
+                        <div class="table-row">
+                            <div class="col-info"><span class="badge-pk">PK</span> <strong>Id</strong></div>
+                            <span class="col-type">int (Identity)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span class="badge-fk">FK</span> <span>ExamId</span></div>
+                            <span class="col-type">int -> Exams.Id</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span class="badge-fk">FK</span> <span>QuestionGroupId</span></div>
+                            <span class="col-type">int -> QGroups.Id</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>QuestionNumber</span></div>
+                            <span class="col-type">int (101..200)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>QuestionText</span></div>
+                            <span class="col-type">nvarchar(max)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>Hint</span></div>
+                            <span class="col-type">nvarchar(max)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>AllowShuffleQuestion</span></div>
+                            <span class="col-type">bit</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>AllowShuffleAnswers</span></div>
+                            <span class="col-type">bit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QuestionOptions -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <span>4. QuestionOptions (Đáp án A, B, C, D)</span>
+                        <span class="tag">4 lựa chọn / câu</span>
+                    </div>
+                    <div class="table-body">
+                        <div class="table-row">
+                            <div class="col-info"><span class="badge-pk">PK</span> <strong>Id</strong></div>
+                            <span class="col-type">int (Identity)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span class="badge-fk">FK</span> <span>QuestionId</span></div>
+                            <span class="col-type">int -> Questions.Id</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>OptionLabel</span></div>
+                            <span class="col-type">varchar(5) ['A','B','C','D']</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>OptionText</span></div>
+                            <span class="col-type">nvarchar(max)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>IsCorrect</span></div>
+                            <span class="col-type">bit (1: Đúng, 0: Sai)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ExamAttempts -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <span>5. ExamAttempts (Lượt nộp bài thi)</span>
+                        <span class="tag">Mobile Student</span>
+                    </div>
+                    <div class="table-body">
+                        <div class="table-row">
+                            <div class="col-info"><span class="badge-pk">PK</span> <strong>Id</strong></div>
+                            <span class="col-type">int (Identity)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span class="badge-fk">FK</span> <span>ExamId</span></div>
+                            <span class="col-type">int -> Exams.Id</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>DeviceId</span></div>
+                            <span class="col-type">nvarchar(100)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>StartTime / SubmitTime</span></div>
+                            <span class="col-type">datetime2</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>TimeSpentSeconds</span></div>
+                            <span class="col-type">int</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>Correct / Wrong / Skipped</span></div>
+                            <span class="col-type">int / int / int</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>Score</span></div>
+                            <span class="col-type">float (Thang điểm 495)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ExamAttemptAnswers -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <span>6. ExamAttemptAnswers (Chi tiết nộp)</span>
+                        <span class="tag">Thống kê Top 10</span>
+                    </div>
+                    <div class="table-body">
+                        <div class="table-row">
+                            <div class="col-info"><span class="badge-pk">PK</span> <strong>Id</strong></div>
+                            <span class="col-type">int (Identity)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span class="badge-fk">FK</span> <span>ExamAttemptId</span></div>
+                            <span class="col-type">int -> Attempts.Id</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span class="badge-fk">FK</span> <span>QuestionId</span></div>
+                            <span class="col-type">int -> Questions.Id</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span class="badge-fk">FK</span> <span>SelectedOptionId</span></div>
+                            <span class="col-type">int (Nullable)</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="col-info"><span>IsCorrect</span></div>
+                            <span class="col-type">bit (1/0)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: SQL DDL VIEW -->
+        <div id="sql-view" class="tab-content">
+            <pre class="sql-code">
+-- =========================================================================
+-- TOEIC EXAM DATABASE SCHEMA (MS SQL SERVER 2022)
+-- =========================================================================
+
+-- 1. BẢNG EXAMS (Đề thi)
+CREATE TABLE Exams (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Title NVARCHAR(255) NOT NULL,
+    DurationMinutes INT NOT NULL DEFAULT 75,
+    TotalQuestions INT NOT NULL DEFAULT 100,
+    IsPublished BIT NOT NULL DEFAULT 0,
+    CreationTime DATETIME2 NOT NULL DEFAULT GETUTCDATE()
+);
+
+-- 2. BẢNG QUESTION GROUPS (Đoạn văn / Nhóm câu hỏi Part 5, 6, 7)
+CREATE TABLE QuestionGroups (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    ExamId INT NOT NULL,
+    PartNumber INT NOT NULL, -- 5, 6, 7
+    DirectionText NVARCHAR(MAX) NULL,
+    PassageContentHtml NVARCHAR(MAX) NULL,
+    PassageImagesJson NVARCHAR(MAX) NULL,
+    OrderIndex INT NOT NULL DEFAULT 0,
+    CONSTRAINT FK_QuestionGroups_Exams FOREIGN KEY (ExamId) 
+        REFERENCES Exams(Id) ON DELETE CASCADE
+);
+
+-- 3. BẢNG QUESTIONS (Câu hỏi 101 - 200)
+CREATE TABLE Questions (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    ExamId INT NOT NULL,
+    QuestionGroupId INT NOT NULL,
+    QuestionNumber INT NOT NULL,
+    QuestionText NVARCHAR(MAX) NOT NULL,
+    Hint NVARCHAR(MAX) NULL,
+    AllowShuffleQuestion BIT NOT NULL DEFAULT 0,
+    AllowShuffleAnswers BIT NOT NULL DEFAULT 0,
+    CONSTRAINT FK_Questions_Exams FOREIGN KEY (ExamId) 
+        REFERENCES Exams(Id),
+    CONSTRAINT FK_Questions_QuestionGroups FOREIGN KEY (QuestionGroupId) 
+        REFERENCES QuestionGroups(Id) ON DELETE CASCADE
+);
+
+-- 4. BẢNG QUESTION OPTIONS (4 lựa chọn A, B, C, D)
+CREATE TABLE QuestionOptions (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    QuestionId INT NOT NULL,
+    OptionLabel VARCHAR(5) NOT NULL, -- 'A', 'B', 'C', 'D'
+    OptionText NVARCHAR(MAX) NOT NULL,
+    IsCorrect BIT NOT NULL DEFAULT 0,
+    CONSTRAINT FK_QuestionOptions_Questions FOREIGN KEY (QuestionId) 
+        REFERENCES Questions(Id) ON DELETE CASCADE
+);
+
+-- 5. BẢNG EXAM ATTEMPTS (Lượt làm bài của sinh viên)
+CREATE TABLE ExamAttempts (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    ExamId INT NOT NULL,
+    DeviceId NVARCHAR(100) NULL,
+    StartTime DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+    SubmitTime DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+    TimeSpentSeconds INT NOT NULL DEFAULT 0,
+    AnsweredCount INT NOT NULL DEFAULT 0,
+    CorrectCount INT NOT NULL DEFAULT 0,
+    WrongCount INT NOT NULL DEFAULT 0,
+    SkippedCount INT NOT NULL DEFAULT 0,
+    Score FLOAT NOT NULL DEFAULT 0,
+    CONSTRAINT FK_ExamAttempts_Exams FOREIGN KEY (ExamId) 
+        REFERENCES Exams(Id) ON DELETE CASCADE
+);
+
+-- 6. BẢNG EXAM ATTEMPT ANSWERS (Chi tiết từng câu nộp để thống kê)
+CREATE TABLE ExamAttemptAnswers (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    ExamAttemptId INT NOT NULL,
+    QuestionId INT NOT NULL,
+    SelectedOptionId INT NULL,
+    IsCorrect BIT NOT NULL DEFAULT 0,
+    CONSTRAINT FK_ExamAttemptAnswers_ExamAttempts FOREIGN KEY (ExamAttemptId) 
+        REFERENCES ExamAttempts(Id) ON DELETE CASCADE,
+    CONSTRAINT FK_ExamAttemptAnswers_Questions FOREIGN KEY (QuestionId) 
+        REFERENCES Questions(Id),
+    CONSTRAINT FK_ExamAttemptAnswers_QuestionOptions FOREIGN KEY (SelectedOptionId) 
+        REFERENCES QuestionOptions(Id)
+);
+
+-- INDEXES TỐI ƯU HIỆU NĂNG TRUY VẤN
+CREATE INDEX IX_QuestionGroups_ExamId ON QuestionGroups(ExamId);
+CREATE INDEX IX_Questions_ExamId_QuestionGroupId ON Questions(ExamId, QuestionGroupId);
+CREATE INDEX IX_QuestionOptions_QuestionId ON QuestionOptions(QuestionId);
+CREATE INDEX IX_ExamAttempts_ExamId ON ExamAttempts(ExamId);
+CREATE INDEX IX_ExamAttemptAnswers_AttemptId_QuestionId ON ExamAttemptAnswers(ExamAttemptId, QuestionId);
+            </pre>
+        </div>
+
+        <footer>
+            <p>Hệ thống thi TOEIC Reading - Báo cáo đồ án | Bản quyền © 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            securityLevel: 'loose',
+            er: {
+                useMaxWidth: true,
+                entityPadding: 15,
+                fill: '#f8fafc',
+                stroke: '#2563eb'
+            }
+        });
+
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.toolbar .btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+    </script>
+</body>
+</html>
