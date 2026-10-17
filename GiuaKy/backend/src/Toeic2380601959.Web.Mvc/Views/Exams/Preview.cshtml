@@ -151,7 +151,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title fw-bold" id="editQuestionModalTitle">Chỉnh sửa Câu hỏi</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn-close close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -196,7 +196,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-bs-dismiss="modal">Hủy</button>
                 <button type="button" class="btn btn-primary" id="btnSaveQuestion">Lưu Thay Đổi</button>
             </div>
         </div>
@@ -209,7 +209,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title fw-bold">Chỉnh sửa Nội dung Bài đọc</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn-close close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -227,7 +227,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-bs-dismiss="modal">Hủy</button>
                 <button type="button" class="btn btn-primary" id="btnSavePassage">Lưu Bài Đọc</button>
             </div>
         </div>
@@ -236,7 +236,35 @@
 
 @section Scripts {
     <script>
+        function openModalById(id) {
+            var el = document.getElementById(id);
+            if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+                bootstrap.Modal.getOrCreateInstance(el).show();
+            } else if (window.jQuery && $(el).modal) {
+                $(el).modal('show');
+            }
+        }
+
+        function closeModalById(id) {
+            var el = document.getElementById(id);
+            if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+                var inst = bootstrap.Modal.getInstance(el);
+                if (inst) inst.hide();
+            }
+            if (window.jQuery && $(el).modal) {
+                $(el).modal('hide');
+            }
+        }
+
         $(document).ready(function () {
+            $('[data-dismiss="modal"], [data-bs-dismiss="modal"]').on('click', function (e) {
+                e.preventDefault();
+                var modal = $(this).closest('.modal');
+                if (modal.length) {
+                    closeModalById(modal.attr('id'));
+                }
+            });
+
             // Open Edit Question Modal
             $('.btn-edit-question').click(function () {
                 var btn = $(this);
@@ -249,7 +277,7 @@
                 $('#editOptionD').val(btn.data('optd'));
                 $('#editKey').val(btn.data('key'));
                 $('#editHint').val(btn.data('hint'));
-                $('#editQuestionModal').modal('show');
+                openModalById('editQuestionModal');
             });
 
             // Save Question AJAX
@@ -272,7 +300,7 @@
                     data: JSON.stringify(payload),
                     success: function (res) {
                         if (res.success) {
-                            $('#editQuestionModal').modal('hide');
+                            closeModalById('editQuestionModal');
                             alert('Cập nhật câu hỏi thành công!');
                             location.reload();
                         } else {
@@ -288,7 +316,7 @@
                 $('#editGroupId').val(btn.data('id'));
                 $('#editDirectionText').val(btn.data('direction'));
                 $('#editPassageContent').val(btn.data('passage'));
-                $('#editPassageModal').modal('show');
+                openModalById('editPassageModal');
             });
 
             // Save Passage AJAX
@@ -306,7 +334,7 @@
                     data: JSON.stringify(payload),
                     success: function (res) {
                         if (res.success) {
-                            $('#editPassageModal').modal('hide');
+                            closeModalById('editPassageModal');
                             alert('Cập nhật bài đọc thành công!');
                             location.reload();
                         } else {

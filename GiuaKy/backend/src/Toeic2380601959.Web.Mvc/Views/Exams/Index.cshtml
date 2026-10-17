@@ -10,7 +10,7 @@
             <p class="text-muted mb-0">Hệ thống quản lý, biên tập và xuất bản đề thi dành cho Giảng viên (ASP.NET Boilerplate)</p>
         </div>
         <div>
-            <button class="btn btn-primary btn-lg shadow-sm" data-toggle="modal" data-target="#uploadModal">
+            <button class="btn btn-primary btn-lg shadow-sm" id="btnOpenUploadModal" data-toggle="modal" data-target="#uploadModal" data-bs-toggle="modal" data-bs-target="#uploadModal">
                 <i class="fas fa-upload me-2"></i>Tải lên đề thi (.docx)
             </button>
         </div>
@@ -101,7 +101,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title fw-bold" id="uploadModalLabel"><i class="fas fa-file-word me-2 text-primary"></i>Tải lên Đề thi Word (.docx)</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn-close close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -131,7 +131,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-bs-dismiss="modal">Đóng</button>
                 <button type="button" class="btn btn-primary" id="btnSubmitUpload">
                     <i class="fas fa-upload me-1"></i> Bắt đầu Tải lên
                 </button>
@@ -142,7 +142,38 @@
 
 @section Scripts {
     <script>
+        function openUploadModal() {
+            var el = document.getElementById('uploadModal');
+            if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+                bootstrap.Modal.getOrCreateInstance(el).show();
+            } else if (window.jQuery && $(el).modal) {
+                $(el).modal('show');
+            }
+        }
+
+        function closeUploadModal() {
+            var el = document.getElementById('uploadModal');
+            if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+                var inst = bootstrap.Modal.getInstance(el);
+                if (inst) inst.hide();
+            }
+            if (window.jQuery && $(el).modal) {
+                $(el).modal('hide');
+            }
+        }
+
         $(document).ready(function () {
+            // Direct click handler for open modal
+            $('#btnOpenUploadModal, [data-target="#uploadModal"], [data-bs-target="#uploadModal"]').on('click', function (e) {
+                e.preventDefault();
+                openUploadModal();
+            });
+
+            $('[data-dismiss="modal"], [data-bs-dismiss="modal"]').on('click', function (e) {
+                e.preventDefault();
+                closeUploadModal();
+            });
+
             // Upload form AJAX handler
             $('#btnSubmitUpload').click(function () {
                 var fileInput = $('#fileInput')[0];
@@ -167,7 +198,7 @@
                         $('#btnSubmitUpload').prop('disabled', false);
 
                         if (res.success) {
-                            $('#uploadModal').modal('hide');
+                            closeUploadModal();
                             alert(res.message);
                             location.reload();
                         } else {
